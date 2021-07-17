@@ -37,34 +37,15 @@
 		<c:when test="${empty sessionScope.session_user }">
 			<a href="<c:url value='/jsps/user/login.jsp'/>" target="_parent">Login</a> |&nbsp; 
 			<a href="<c:url value='/jsps/user/regist.jsp'/>" target="_parent">Register</a>	|&nbsp; 
-			<a href="<c:url value='/jsps/user/create.jsp'/>" target="_parent">Create Database</a>	|&nbsp; 
-			<a href="<c:url value='/jsps/user/create.jsp'/>" target="_parent">Insert Game</a>	|&nbsp; 
-			<a href="<c:url value='/jsps/user/create.jsp'/>" target="_parent">Insert Price Record</a> |&nbsp; 
-			<a href="<c:url value='/jsps/user/create.jsp'/>" target="_parent">Insert Genre</a>	|&nbsp; 
-			<a href="<c:url value='/jsps/user/create.jsp'/>" target="_parent">Insert User</a>	|&nbsp; 
 			
-			
-			<a href="<c:url value='/jsps/user/delete.jsp'/>" target="_parent">Delete Game</a>	|&nbsp; 
-			<a href="<c:url value='/jsps/user/delete.jsp'/>" target="_parent">Delete Price Record</a> |&nbsp; 
-			<a href="<c:url value='/jsps/user/delete.jsp'/>" target="_parent">Delete Genre</a>	|&nbsp; 
-			<a href="<c:url value='/jsps/user/delete.jsp'/>" target="_parent">Delete User</a>
-			
-			<a href="<c:url value='/jsps/user/update.jsp'/>" target="_parent">Update Game</a> |&nbsp; 			
-			<a href="<c:url value='/jsps/user/update.jsp'/>" target="_parent">Update Price Record</a> |&nbsp; 
-			<a href="<c:url value='/jsps/user/update.jsp'/>" target="_parent">Update Genre</a>	|&nbsp; 
-			<a href="<c:url value='/jsps/user/update.jsp'/>" target="_parent">Update User</a>
-			
-			<a href="<c:url value='/jsps/user/read.jsp'/>" target="_parent">Read Game</a>	|&nbsp; 
-			<a href="<c:url value='/jsps/user/read.jsp'/>" target="_parent">Read Price Record</a> |&nbsp; 
-			<a href="<c:url value='/jsps/user/read.jsp'/>" target="_parent">Read Genre</a>	|&nbsp; 
-			<a href="<c:url value='/jsps/user/read.jsp'/>" target="_parent">Read User</a>
-			
-			
-				
 		</c:when>
 		<c:otherwise>
-			Hello：${sessionScope.session_user.username };
-			<a href="<c:url value='/jsps/item.jsp'/>" target="body">Query Result</a>&nbsp;&nbsp;
+			Hello：${sessionScope.session_user.username };<br/>
+			<a href="<c:url value='/jsps/item.jsp'/>" target="body">Initialize Database</a>   |&nbsp;&nbsp;
+			<a href="<c:url value='/jsps/user/crud_home.jsp'/>" target="body">User</a>	|&nbsp; 
+			<a href="<c:url value='/jsps/game/crud_game.jsp'/>" target="body">Game</a>	|&nbsp; 
+			<a href="<c:url value='/jsps/genre/crud_genre.jsp'/>" target="body">Genre</a> |&nbsp; 
+
 		</c:otherwise>
 	</c:choose>
 

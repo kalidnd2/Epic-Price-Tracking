@@ -3,33 +3,23 @@ package user.web.servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.jws.WebService;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import user.dao.UserDao;
 import user.domain.User;
 import user.service.UserException;
 import user.service.UserService;
 
-/**
- * Servlet implementation class UserServlet
- */
-
-public class CreateServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
+public class DeleteServlet extends HttpServlet {
+	/**
      * @see HttpServlet#HttpServlet()
      */
-    public CreateServlet() {
+    public DeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -57,29 +47,24 @@ public class CreateServlet extends HttpServlet {
 					info.add(values[0]);
 					System.out.println(name + ": " + Arrays.toString(values));
 				}
-				form.setUsername(info.get(1));
-				form.setPassword(info.get(2));
-				form.setEmail(info.get(3));
+				form.setId(info.get(1));
 				
 				try {
-					userservice.regist(form);
-					request.setAttribute("message", "User "+ form.getUsername()+" created successfully!!" );
+					userservice.deleteUser(form);
+					request.setAttribute("message", "User with id: "+form.getId()+" deleted successfully!!" );
 					request.getRequestDispatcher("/Queryresult/MessagePage.jsp").forward(request, response);
 					//response.sendRedirect( request.getContextPath() + "/jsps/user/login.jsp");
 				} catch (ClassNotFoundException | UserException e) {
-					request.setAttribute("message", "Error creating user "+ form.getUsername() );
+					request.setAttribute("message", "User with id: "+form.getId()+" not found!!" );
 					request.getRequestDispatcher("/Queryresult/MessagePage.jsp").forward(request, response);
 					e.printStackTrace();
 				} catch (InstantiationException e) {
-					request.setAttribute("message", "Error creating user "+ form.getUsername() );
-					request.getRequestDispatcher("/Queryresult/MessagePage.jsp").forward(request, response);
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IllegalAccessException e) {
-					request.setAttribute("message", "Error creating user "+ form.getUsername() );
-					request.getRequestDispatcher("/Queryresult/MessagePage.jsp").forward(request, response);
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} 
 		
 	}
-
 }

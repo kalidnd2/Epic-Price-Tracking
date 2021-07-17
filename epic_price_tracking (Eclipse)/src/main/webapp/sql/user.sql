@@ -3,12 +3,13 @@ CREATE DATABASE bookstore;
 
 use  bookstore;
 
-CREATE TABLE tb_user 
-(
-  
-  username VARCHAR(50) primary key,
-  `password` VARCHAR(50) NOT NULL,
-  email VARCHAR(50) NOT NULL
+Create TABLE tb_user(
+    id INT AUTO_INCREMENT,
+    username VARCHAR(15) NOT NULL,
+    password VARCHAR(215) NOT NULL,
+	email VARCHAR(50) NOT NULL,
+
+    PRIMARY KEY (id)
 );
 
 

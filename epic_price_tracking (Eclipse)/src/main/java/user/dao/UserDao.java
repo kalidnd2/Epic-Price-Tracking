@@ -16,6 +16,7 @@ import user.domain.User;
 
 
 
+
 /**
  * DDL functions performed in database
  * @author changxin bai
@@ -23,6 +24,7 @@ import user.domain.User;
  */
 public class UserDao {
 	
+
 	
 	/**
 	 * get the search result with username 
@@ -38,8 +40,9 @@ public class UserDao {
 			
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/bookstore?"
-				              + "user=root&password=skalidindi96");
+					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+				              + "user=root&password=");
+			
 		    String sql = "select * from tb_user where username=?";
 		    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 		    preparestatement.setString(1,username);
@@ -76,11 +79,11 @@ public class UserDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
-			          .getConnection("jdbc:mysql://localhost:3306/bookstore?"
-				              + "user=root&password=skalidindi96");
+			          .getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+				              + "user=root&password=");
 			
 			
-			String sql = "insert into tb_user values(?,?,?)";
+			String sql = "insert into tb_user(username,password,email) values(?,?,?)";
 			PreparedStatement preparestatement = connect.prepareStatement(sql); 
 		    preparestatement.setString(1,user.getUsername());
 		    preparestatement.setString(2,user.getPassword());
@@ -97,8 +100,8 @@ public class UserDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/bookstore?"
-				              + "user=root&password=skalidindi96");
+					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+				              + "user=root&password=");
 			
 			
 			String sql = "select * from tb_user";
@@ -119,5 +122,81 @@ public class UserDao {
 		return list;
 		
 	}
+	
+	public User findById(String id) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+		User user = new User();
+		try {
+			
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+		    String sql = "select * from tb_user where id=?";
+			Connection connect = DriverManager
+					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+				              + "user=root&password=");
+		    PreparedStatement preparestatement = connect.prepareStatement(sql); 
+		    preparestatement.setString(1,id);
+		    ResultSet resultSet = preparestatement.executeQuery();
+		    //ResultSet resultSet  = preparestatement.executeUpdate();
+		    while(resultSet.next()){
+		    	String user_name = resultSet.getString("id");
+		    	if(user_name.equals(id)){
+		    		user.setId(resultSet.getString("id"));
+		    		user.setUsername(resultSet.getString("username"));
+		    		user.setPassword(resultSet.getString("password"));
+		    		user.setEmail(resultSet.getString("email"));
+		    		
+		    	}
+		    }
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return user;
+	}
+	
+	public User updateUser(User user) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+		
+		try {		
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+	    String sql = "UPDATE tb_user SET username=?,password=?,email=? WHERE id = ?";
+		Connection connect = DriverManager
+				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+			              + "user=root&password=");
+	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
+	    preparestatement.setString(1,user.getUsername());
+	    preparestatement.setString(2,user.getPassword());
+	    preparestatement.setString(3,user.getEmail());
+	    preparestatement.setString(4,user.getId());
+	    System.out.println(preparestatement.toString());
+	    preparestatement.executeUpdate();
+
+	} catch(SQLException e) {
+		throw new RuntimeException(e);
+	}
+	return user;
+		
+		
+	}
+	
+	public User deleteUser(User user) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+		
+		try {
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+	    String sql = "DELETE FROM tb_user WHERE id = ? ";
+		Connection connect = DriverManager
+				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+			              + "user=root&password=");
+	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
+	    preparestatement.setString(1,user.getId());
+	    System.out.println(preparestatement.toString());
+	    preparestatement.executeUpdate();
+
+	} catch(SQLException e) {
+		throw new RuntimeException(e);
+	}
+	return user;
+		
+		
+	}
+	
+	
 		
 }

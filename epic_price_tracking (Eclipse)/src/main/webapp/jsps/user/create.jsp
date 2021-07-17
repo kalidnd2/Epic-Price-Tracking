@@ -21,13 +21,22 @@
   </head>
   
   <body>
-  <h1>Create Database</h1>
+  <h1>Create new User:</h1>
 
 
-<p style="color: red; font-weight: 900"> ${msg}</p>
-<form action="<c:url value='/CreateServlet'/>" method="post">
-	<input type="hidden" name="method" value="login"/>
-	<input type="submit" value="Create Database"/>
-</form>
+	<form action="<c:url value='/CreateServlet'/>" method="post">
+		<input type="hidden" name="method" value="regist"/>
+		User    :<input type="text" name="username" value="${form.username }"/>
+		<span style="color: red; font-weight: 900">${errors.username }</span>
+		<br/>
+		Password：<input type="password" name="password" value="${form.password }"/>
+		<span style="color: red; font-weight: 900">${errors.password }</span>
+		<br/>
+		Email	：<input type="text" name="email" value="${form.email }"/>
+		<span style="color: red; font-weight: 900">${errors.email }</span>
+		<br/>
+		<input type="submit" value="Create"/>
+	</form>
+
   </body>
 </html>

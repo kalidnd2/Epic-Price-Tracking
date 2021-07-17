@@ -21,13 +21,15 @@
   </head>
   
   <body>
-  <h1>Delete Database</h1>
+  <h1>Delete User:</h1>
 
 
-<p style="color: red; font-weight: 900"> ${msg}</p>
-<form action="<c:url value='/CreateServlet'/>" method="post">
-	<input type="hidden" name="method" value="login"/>
-	<input type="submit" value="Delete Database"/>
-</form>
+	<form action="<c:url value='/DeleteUserServlet'/>" method="post">
+		<input type="hidden" name="method" value="regist"/>
+		user id    :<input type="text" name="id" value="${form.id }"/>
+		<span style="color: red; font-weight: 900">${errors.id }</span>
+		<br/>
+		<input type="submit" value="Delete user"/>
+	</form>
   </body>
 </html>

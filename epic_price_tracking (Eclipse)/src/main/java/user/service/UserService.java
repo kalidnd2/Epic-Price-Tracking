@@ -53,4 +53,18 @@ public class UserService {
 		return userDao.findall();
 		
 	}
+	
+	public void updateUser(User user) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UserException {
+		User existinguser = userDao.findById(user.getId());
+		if(existinguser.getUsername()==null) throw new UserException("The user is not in the database");
+		userDao.updateUser(user);
+	}
+	
+	public void deleteUser(User user) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UserException {
+		User existinguser = userDao.findById(user.getId());
+		if(existinguser.getUsername() == null) throw new UserException("The user is not in the database");
+		userDao.deleteUser(user);
+	}
+	
+	
 }
