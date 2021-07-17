@@ -22,10 +22,10 @@
   </head>
   
   <body>
-    <h1>Welcome to the Demo</h1>
+    <h3>Initialize the Database</h3>
     <br>
-    <a href="<c:url value='/findAll'/>" target="body">Please list all the user in the table</a>&nbsp;&nbsp;
- 
-    
+    <form action="<c:url value='/InitializeDB'/>" method="post">
+		<input type="submit" value="Click to Initialize the database."/>
+	</form>   
   </body>
 </html>
