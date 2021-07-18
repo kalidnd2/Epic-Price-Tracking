@@ -22,10 +22,10 @@
   
   <body>
   <h1>Game CRUD Operations: </h1>
-  <a href="<c:url value='/findAll'/>" target="body">Read All Games</a>&nbsp;&nbsp;
-  <a href="<c:url value='/jsps/user/create.jsp'/>" target="body">Create Game</a>&nbsp;&nbsp;
-  <a href="<c:url value='/jsps/user/update.jsp'/>" target="body">Update Game</a>&nbsp;&nbsp;
-  <a href="<c:url value='/jsps/user/delete.jsp'/>" target="body">Delete Game</a>&nbsp;&nbsp;
+  <a href="<c:url value='/findAllgames'/>" target="body">Read All Games</a>&nbsp;&nbsp;
+  <a href="<c:url value='/jsps/game/create2.jsp'/>" target="body">Create Game</a>&nbsp;&nbsp;
+  <a href="<c:url value='/jsps/game/update2.jsp'/>" target="body">Update Game</a>&nbsp;&nbsp;
+  <a href="<c:url value='/jsps/game/delete2.jsp'/>" target="body">Delete Game</a>&nbsp;&nbsp;
 
   </body>
 </html>

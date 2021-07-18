@@ -70,6 +70,52 @@
   </servlet-mapping>
   
   
+  
+  
+<servlet>
+    <description></description>
+    <display-name>findAllgames</display-name>
+    <servlet-name>findAllgames</servlet-name>
+    <servlet-class>game.web.servlet.findAll</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>findAllgames</servlet-name>
+    <url-pattern>/findAllgames</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateGameServlet</display-name>
+    <servlet-name>UpdateGameServlet</servlet-name>
+    <servlet-class>game.web.servlet.UpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateGameServlet</servlet-name>
+    <url-pattern>/UpdateGameServlet</url-pattern>
+  </servlet-mapping>
+
+    <servlet>
+    <description></description>
+    <display-name>DeleteGameServlet</display-name>
+    <servlet-name>DeleteGameServlet</servlet-name>
+    <servlet-class>game.web.servlet.DeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteGameServlet</servlet-name>
+    <url-pattern>/DeleteGameServlet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <description></description>
+    <display-name>CreateServlet2</display-name>
+    <servlet-name>CreateServlet2</servlet-name>
+    <servlet-class>game.web.servlet.CreateServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateServlet2</servlet-name>
+    <url-pattern>/CreateServlet2</url-pattern>
+  </servlet-mapping>
+  
+  
   <servlet>
     <description></description>
     <display-name>InitializeDB</display-name>
