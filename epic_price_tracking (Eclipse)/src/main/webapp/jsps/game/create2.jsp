@@ -35,7 +35,7 @@
 		Price	：<input type="text" name="price" value="${form.price }"/>
 		<span style="color: red; font-weight: 900">${errors.price }</span>
 		<br/>
-		<input type="submit" value="Create"/>
+		<input type="submit" value="Create Game"/>
 	</form>
 
   </body>

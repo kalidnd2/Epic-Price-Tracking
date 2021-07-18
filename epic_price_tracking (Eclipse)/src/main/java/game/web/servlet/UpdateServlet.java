@@ -64,7 +64,7 @@ public class UpdateServlet extends HttpServlet {
 					//response.sendRedirect( request.getContextPath() + "/jsps/user/login.jsp");
 				} catch (ClassNotFoundException | GameException e) {
 					// TODO Auto-generated catch block
-					request.setAttribute("message", "User with id: "+form.getId()+" not found!!" );
+					request.setAttribute("message", "Game with id: "+form.getId()+" not found!!" );
 					request.getRequestDispatcher("/Queryresult/MessagePage.jsp").forward(request, response);
 					e.printStackTrace();
 				} catch (InstantiationException e) {

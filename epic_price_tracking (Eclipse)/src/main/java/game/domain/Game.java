@@ -37,7 +37,7 @@ public class Game {
 		return thumbnail;
 	}
 
-	public void setThumbnail(String password) {
+	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
 	}
 
