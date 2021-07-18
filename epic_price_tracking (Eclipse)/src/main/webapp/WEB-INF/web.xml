@@ -127,6 +127,50 @@
     <url-pattern>/InitializeDB</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <description></description>
+    <display-name>CreatePublisher</display-name>
+    <servlet-name>CreatePublisher</servlet-name>
+    <servlet-class>publisher.web.servlet.CreateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreatePublisher</servlet-name>
+    <url-pattern>/CreatePublisher</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>DeletePublisher</display-name>
+    <servlet-name>DeletePublisher</servlet-name>
+    <servlet-class>publisher.web.servlet.DeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeletePublisher</servlet-name>
+    <url-pattern>/DeletePublisher</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>findAllPublisher</display-name>
+    <servlet-name>findAllPublisher</servlet-name>
+    <servlet-class>publisher.web.servlet.findAll</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>findAllPublisher</servlet-name>
+    <url-pattern>/findAllPublisher</url-pattern>
+  </servlet-mapping> 
+  
+   <servlet>
+    <description></description>
+    <display-name>updatePublisher</display-name>
+    <servlet-name>updatePublisher</servlet-name>
+    <servlet-class>publisher.web.servlet.UpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>updatePublisher</servlet-name>
+    <url-pattern>/updatePublisher</url-pattern>
+  </servlet-mapping>   
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>login.jsp</welcome-file>
