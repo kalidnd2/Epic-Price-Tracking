@@ -169,7 +169,52 @@
   <servlet-mapping>
     <servlet-name>updatePublisher</servlet-name>
     <url-pattern>/updatePublisher</url-pattern>
-  </servlet-mapping>   
+  </servlet-mapping> 
+  
+  
+  <servlet>
+    <description></description>
+    <display-name>CreateGenre</display-name>
+    <servlet-name>CreateGenre</servlet-name>
+    <servlet-class>genre.web.servlet.CreateGenreServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateGenre</servlet-name>
+    <url-pattern>/CreateGenre</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>DeleteGenre</display-name>
+    <servlet-name>DeleteGenre</servlet-name>
+    <servlet-class>genre.web.servlet.DeleteGenreServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteGenre</servlet-name>
+    <url-pattern>/DeleteGenre</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>findAllGenre</display-name>
+    <servlet-name>findAllGenre</servlet-name>
+    <servlet-class>genre.web.servlet.findAll</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>findAllGenre</servlet-name>
+    <url-pattern>/findAllGenre</url-pattern>
+  </servlet-mapping> 
+  
+   <servlet>
+    <description></description>
+    <display-name>updateGenre</display-name>
+    <servlet-name>updateGenre</servlet-name>
+    <servlet-class>genre.web.servlet.UpdateGenreServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>updateGenre</servlet-name>
+    <url-pattern>/updateGenre</url-pattern>
+  </servlet-mapping>  
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
