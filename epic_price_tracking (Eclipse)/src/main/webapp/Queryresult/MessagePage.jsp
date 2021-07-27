@@ -5,8 +5,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>CRUD Result</title>
+<style><%@include file="/WEB-INF/lib/css/bootstrap.min.css"%></style>
 </head>
 <body>
-	<h5>${message}</h5>
+	<div class="alert alert-primary" role="alert">
+		${message}
+	</div>
 </body>
 </html>

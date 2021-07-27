@@ -16,7 +16,7 @@
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	--><style><%@include file="/WEB-INF/lib/css/bootstrap.min.css"%></style>
 
   </head>
   
@@ -25,11 +25,14 @@
 
 
 	<form action="<c:url value='/DeletePublisher'/>" method="post">
-		<input type="hidden" name="method" value="regist"/>
-		publisher id    :<input type="text" name="id" value="${form.id }"/>
-		<span style="color: red; font-weight: 900">${errors.id }</span>
-		<br/>
-		<input type="submit" value="Delete publisher"/>
+	<input type="hidden" name="method" value="regist"/>
+		<div class="form-group">
+			<label for="epic-publisher-id">Publisher ID</label>
+			<input id="epic-publisher-id" class="form-control" required type="text" name="id" value="${form.id }"/>
+			<span style="color: red; font-weight: 900">${errors.id}</span>
+		</div>
+		<input type="submit" class="btn btn-primary" value="Delete publisher"/>
+		<a class="btn btn-secondary" href="<c:url value='/jsps/publisher/crud_publisher.jsp'/>" target="body">Cancel</a>
 	</form>
   </body>
 </html>

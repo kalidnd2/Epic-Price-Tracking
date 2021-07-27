@@ -17,6 +17,7 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<style><%@include file="/WEB-INF/lib/css/bootstrap.min.css"%></style>
 
   </head>
   
@@ -25,11 +26,14 @@
 
 
 	<form action="<c:url value='/DeleteGameServlet'/>" method="post">
-		<input type="hidden" name="method" value="regist"/>
-		game id    :<input type="text" name="id" value="${form.id }"/>
-		<span style="color: red; font-weight: 900">${errors.id }</span>
-		<br/>
-		<input type="submit" value="Delete game"/>
+	<input type="hidden" name="method" value="regist"/>
+		<div class="form-group">
+			<label for="epic-game-id">Game Id</label>
+			<input id="epic-game-id" class="form-control" required type="text" name="id" value="${form.id }"/>
+			<span style="color: red; font-weight: 900">${errors.id }</span>
+		</div>	
+		<input type="submit" class="btn btn-primary" value="Delete game"/>
+		<a class="btn btn-secondary" href="<c:url value='/jsps/game/crud_game.jsp'/>" target="body">Cancel</a>
 	</form>
   </body>
 </html>

@@ -14,24 +14,19 @@
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<style><%@include file="/WEB-INF/lib/css/bootstrap.min.css"%></style>
+	<script ><%@include file="/WEB-INF/lib/js/bootstrap.min.js"%></script>
+	<script
+			  src="https://code.jquery.com/jquery-3.6.0.slim.js"
+			  integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+			  crossorigin="anonymous"></script>
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<style type="text/css">
-		*{
-			font-size:10pt;
-		}
+
 		body{
 			text-align:center;
-		}
-		.table{
-			width:1024px;
-			height:100%;
-			border:1px solid gray;
-		    border-collapse: collapse;
-		}
-		.table td{
-			border:1px solid gray;
 		}
 		iframe {
 			width: 100%;
@@ -41,17 +36,15 @@
   </head>
   
   <body>
-<table class="table" align="center">
-	<tr style="background: #4682B4; height: 120px; ">
-		<td colspan="2" align="center">
-			<iframe frameborder="0" src="<c:url value='/jsps/top.jsp'/>" name="top"></iframe>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<iframe frameborder="0" src="<c:url value='/jsps/body.jsp'/>" name="body"></iframe>
-		</td>
-	</tr>
-</table>
+<div style="display: flex; flex-direction: column; height:100%">
+	<div style="max-height:60px">
+		<iframe frameborder="0" src="<c:url value='/jsps/top.jsp'/>" name="top"></iframe>
+	</div>
+	<div style="padding-top: 20px;  height:100%">
+	<div class="container">
+		<iframe frameborder="0" src="<c:url value='/jsps/body.jsp'/>" name="body"></iframe>
+	</div>
+	</div>
+</div>
   </body>
 </html>

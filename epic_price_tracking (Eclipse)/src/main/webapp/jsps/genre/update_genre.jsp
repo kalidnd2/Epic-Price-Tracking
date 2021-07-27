@@ -17,26 +17,32 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+<style><%@include file="/WEB-INF/lib/css/bootstrap.min.css"%></style>
   </head>
   
   <body>
   <h1>Update Genre:</h1>
 
 
-	<form action="<c:url value='/UpdateGenreServlet'/>" method="post">
-		<input type="hidden" name="method" value="regist"/>
-		game id    :<input type="text" name="id" value="${form.id }"/>
-		<span style="color: red; font-weight: 900">${errors.id }</span>
-		<br/>
-		<input type="hidden" name="method" value="regist"/>
-		Name    :<input type="text" name="name" value="${form.name }"/>
-		<span style="color: red; font-weight: 900">${errors.name }</span>
-		<br/>
-		ParentGenre：<input type="text" name="parentGenre" value="${form.parentGenre }"/>
-		<span style="color: red; font-weight: 900">${errors.thumbnail }</span>
-		<br/>
-		<input type="submit" value="Update Genre"/>
+	<form action="<c:url value='/updateGenre'/>" method="post">
+	<input type="hidden" name="method" value="regist"/>
+		<div class="form-group">
+			<label for="epic-genre-id">Genre Id</label>
+			<input id="epic-genre-id" class="form-control" required type="text" name="id" value="${form.id }"/>
+			<span style="color: red; font-weight: 900">${errors.id }</span>
+		</div>	
+		<div class="form-group">
+			<label for="epic-genre-name">Name</label>
+			<input id="epic-genre-name" class="form-control" required type="text" name="name" value="${form.name }"/>
+			<span style="color: red; font-weight: 900">${errors.name }</span>
+		</div>	
+		<div class="form-group">
+			<label for="epic-genre-parent">Parent Genre</label>
+			<input id="epic-genre-parent" class="form-control" type="text" name="parentGenre" value="${form.parentGenre }"/>
+			<span style="color: red; font-weight: 900">${errors.parentGenre }</span>
+		</div>	
+		<input type="submit" class="btn btn-primary" value="Update Genre"/>
+		<a class="btn btn-secondary" href="<c:url value='/jsps/genre/crud_genre.jsp'/>" target="body">Cancel</a>
 	</form>
 
   </body>

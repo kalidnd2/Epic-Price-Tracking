@@ -17,20 +17,27 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+<style><%@include file="/WEB-INF/lib/css/bootstrap.min.css"%></style>
   </head>
   
   <body>
   <h1>Create new Genre:</h1>
 
 
-	<form action="<c:url value='CreateGenreServlet'/>" method="post">
-		<input type="hidden" name="method" value="regist"/>
-		Name    :<input type="text" name="name" value="${form.name }"/>
-		<span style="color: red; font-weight: 900">${errors.name }</span>
-		ParentGenre：<input type="text" name="parentGenre" value="${form.parentGenre}"/>
-		<br/>
-		<input type="submit" value="Create Genre"/>
+	<form action="<c:url value='/CreateGenre'/>" method="post">
+	<input type="hidden" name="method" value="regist"/>
+		<div class="form-group">
+			<label for="epic-genre-name">Name</label>
+			<input id="epic-genre-name" class="form-control" required type="text" name="name" value="${form.name }"/>
+			<span style="color: red; font-weight: 900">${errors.name }</span>
+		</div>	
+		<div class="form-group">
+			<label for="epic-genre-parent">Parent Genre</label>
+			<input id="epic-genre-parent" class="form-control" type="text" name="parentGenre" value="${form.parentGenre }"/>
+			<span style="color: red; font-weight: 900">${errors.parentGenre }</span>
+		</div>	
+		<input type="submit" class="btn btn-primary" value="Create Genre"/>
+		<a class="btn btn-secondary" href="<c:url value='/jsps/genre/crud_genre.jsp'/>" target="body">Cancel</a>
 	</form>
 
   </body>

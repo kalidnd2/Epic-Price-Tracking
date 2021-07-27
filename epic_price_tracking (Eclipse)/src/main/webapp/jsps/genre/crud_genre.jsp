@@ -17,12 +17,12 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+<style><%@include file="/WEB-INF/lib/css/bootstrap.min.css"%></style>
   </head>
   
   <body>
   <h1>Genre CRUD Operations: </h1>
-  <a href="<c:url value='/findAll'/>" target="body">Read All Genres</a>&nbsp;&nbsp;
+  <a href="<c:url value='/findAllGenre'/>" target="body">Read All Genres</a>&nbsp;&nbsp;
   <a href="<c:url value='/jsps/genre/create_genre.jsp'/>" target="body">Create Genre</a>&nbsp;&nbsp;
   <a href="<c:url value='/jsps/genre/update_genre.jsp'/>" target="body">Update Genre</a>&nbsp;&nbsp;
   <a href="<c:url value='/jsps/genre/delete_genre.jsp'/>" target="body">Delete Genre</a>&nbsp;&nbsp;

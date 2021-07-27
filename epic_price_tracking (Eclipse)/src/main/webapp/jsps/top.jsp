@@ -13,25 +13,61 @@
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+		<style><%@include file="/WEB-INF/lib/css/bootstrap.min.css"%></style>
+	<script ><%@include file="/WEB-INF/lib/js/bootstrap.min.js"%></script>
+	<script
+			  src="https://code.jquery.com/jquery-3.6.0.slim.js"
+			  integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+			  crossorigin="anonymous"></script>
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-<style type="text/css">
-	body {
-		background: #4682B4; 
-	}
-	a {
-		text-transform:none;
-		text-decoration:none;
-	} 
-	a:hover {
-		text-decoration:underline;
-	}
-</style>
   </head>
   
   <body>
-<h1 style="text-align: center;">epic_price_tracking</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href=<c:url value='/jsps/body.jsp'/> target="body">Epic Games Tracker</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    <c:choose>
+		<c:when test="${empty sessionScope.session_user }">
+		<li class="nav-item ">
+        	<a class="nav-link" href="<c:url value='/jsps/user/login.jsp'/>" target="body">Login <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+        	<a class="nav-link" href="<c:url value='/jsps/user/regist.jsp'/>" target="body">Register</a>
+      	</li>
+		</c:when>
+		<c:otherwise>
+		<li class="nav-item">
+        	<a class="nav-link" href="<c:url value='/jsps/item.jsp'/>" target="body">Initialize Database</a>
+      	</li>
+      	<li class="nav-item">
+        	<a class="nav-link" href="<c:url value='/findAllgames'/>" target="body">Home</a>
+      	</li>
+      	<li class="nav-item ">
+        	<a class="nav-link" href="<c:url value='/jsps/user/crud_home.jsp'/>" target="body">User</a>
+      	</li>
+      	<li class="nav-item">
+        	<a class="nav-link" href="<c:url value='/jsps/game/crud_game.jsp'/>" target="body">Game</a>
+      	</li>
+      	<li class="nav-item">
+        	<a class="nav-link" href="<c:url value='/jsps/genre/crud_genre.jsp'/>" target="body">Genre</a>
+      	</li>
+        <li class="nav-item">
+        	<a class="nav-link" href="<c:url value='/jsps/publisher/crud_publisher.jsp'/>" target="body">Publisher</a>
+      	</li>
+		</c:otherwise>
+	</c:choose>
+    </ul>
+  </div>
+</nav>
+ <!-- ------------------------ --> 
+<%-- <h1 style="text-align: center;">epic_price_tracking</h1>
 <div style="font-size: 10pt;">
 	<c:choose>
 		<c:when test="${empty sessionScope.session_user }">
@@ -50,6 +86,6 @@
 		</c:otherwise>
 	</c:choose>
 
-</div>
+</div> --%>
   </body>
 </html>

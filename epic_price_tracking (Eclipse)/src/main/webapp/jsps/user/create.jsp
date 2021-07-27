@@ -14,6 +14,7 @@
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<style><%@include file="/WEB-INF/lib/css/bootstrap.min.css"%></style>
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
@@ -25,17 +26,24 @@
 
 
 	<form action="<c:url value='/CreateServlet'/>" method="post">
-		<input type="hidden" name="method" value="regist"/>
-		User    :<input type="text" name="username" value="${form.username }"/>
+	<input type="hidden" name="method" value="regist"/>
+	<div class="form-group">
+		<label for="epic-user-name">Name</label>
+		<input id="epic-user-name" class="form-control" required type="text" name="username" value="${form.username }"/>
 		<span style="color: red; font-weight: 900">${errors.username }</span>
-		<br/>
-		Password：<input type="password" name="password" value="${form.password }"/>
+	</div>	
+	<div class="form-group">
+		<label for="epic-user-password">Password</label>
+		<input id="epic-user-password" class="form-control" required type="password" name="password" value="${form.password }"/>
 		<span style="color: red; font-weight: 900">${errors.password }</span>
-		<br/>
-		Email	：<input type="text" name="email" value="${form.email }"/>
+	</div>	
+	<div class="form-group">	
+		<label for="epic-user-email">Email address</label>
+		<input id="epic-user-email" class="form-control" required type="email" name="email" value="${form.email }"/>
 		<span style="color: red; font-weight: 900">${errors.email }</span>
-		<br/>
-		<input type="submit" value="Create"/>
+	</div>
+	<input type="submit" class="btn btn-primary " value="Create"/>
+	<a class="btn btn-secondary" href="<c:url value='/jsps/user/crud_home.jsp'/>" target="body">Cancel</a>
 	</form>
 
   </body>

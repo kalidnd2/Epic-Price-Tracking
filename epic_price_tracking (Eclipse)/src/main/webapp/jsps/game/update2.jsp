@@ -17,7 +17,7 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+<style><%@include file="/WEB-INF/lib/css/bootstrap.min.css"%></style>
   </head>
   
   <body>
@@ -25,21 +25,29 @@
 
 
 	<form action="<c:url value='/UpdateGameServlet'/>" method="post">
-		<input type="hidden" name="method" value="regist"/>
-		game id    :<input type="text" name="id" value="${form.id }"/>
-		<span style="color: red; font-weight: 900">${errors.id }</span>
-		<br/>
-		<input type="hidden" name="method" value="regist"/>
-		Name    :<input type="text" name="name" value="${form.name }"/>
-		<span style="color: red; font-weight: 900">${errors.name }</span>
-		<br/>
-		Thumbnail：<input type="text" name="thumbnail" value="${form.thumbnail }"/>
-		<span style="color: red; font-weight: 900">${errors.thumbnail }</span>
-		<br/>
-		Price	：<input type="text" name="price" value="${form.price }"/>
-		<span style="color: red; font-weight: 900">${errors.price }</span>
-		<br/>
-		<input type="submit" value="Update Game"/>
+	<input type="hidden" name="method" value="regist"/>
+		<div class="form-group">
+			<label for="epic-game-id">Game Id</label>
+			<input id="epic-game-id" class="form-control" required type="text" name="id" value="${form.id }"/>
+			<span style="color: red; font-weight: 900">${errors.id }</span>
+		</div>	
+		<div class="form-group">
+			<label for="epic-game-name">Name</label>
+			<input id="epic-game-name" class="form-control" required type="text" name="name" value="${form.name }"/>
+			<span style="color: red; font-weight: 900">${errors.name }</span>
+		</div>	
+		<div class="form-group">
+			<label for="epic-game-thumbnail">Thumbnail</label>
+			<input id="epic-game-thumbnail" class="form-control" required type="password" name="thumbnail" value="${form.thumbnail }"/>
+			<span style="color: red; font-weight: 900">${errors.thumbnail }</span>
+		</div>	
+		<div class="form-group">	
+			<label for="epic-game-price">Price</label>
+			<input id="epic-game-price" class="form-control" required type="text" name="price" value="${form.price }"/>
+			<span style="color: red; font-weight: 900">${errors.price }</span>
+		</div>
+		<input type="submit" class="btn btn-primary" value="Update Game"/>
+		<a class="btn btn-secondary" href="<c:url value='/jsps/game/crud_game.jsp'/>" target="body">Cancel</a>
 	</form>
 
   </body>

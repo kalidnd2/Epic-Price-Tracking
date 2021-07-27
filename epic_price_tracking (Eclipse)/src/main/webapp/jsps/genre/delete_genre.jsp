@@ -17,19 +17,22 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+<style><%@include file="/WEB-INF/lib/css/bootstrap.min.css"%></style>
   </head>
   
   <body>
   <h1>Delete Genre:</h1>
 
 
-	<form action="<c:url value='/DeleteGenreServlet'/>" method="post">
-		<input type="hidden" name="method" value="regist"/>
-		genre id    :<input type="text" name="id" value="${form.id }"/>
-		<span style="color: red; font-weight: 900">${errors.id }</span>
-		<br/>
-		<input type="submit" value="Delete Genre"/>
+	<form action="<c:url value='/DeleteGenre'/>" method="post">
+	<input type="hidden" name="method" value="regist"/>
+		<div class="form-group">
+			<label for="epic-genre-id">Genre Id</label>
+			<input id="epic-genre-id" class="form-control" required type="text" name="id" value="${form.id }"/>
+			<span style="color: red; font-weight: 900">${errors.id }</span>
+		</div>
+		<input type="submit" class="btn btn-primary" value="Delete Genre"/>
+		<a class="btn btn-secondary" href="<c:url value='/jsps/genre/crud_genre.jsp'/>" target="body">Cancel</a>
 	</form>
   </body>
 </html>

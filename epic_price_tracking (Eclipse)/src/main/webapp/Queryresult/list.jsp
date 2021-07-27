@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<style><%@include file="/WEB-INF/lib/css/bootstrap.min.css"%></style>
 </head>
 <body>
 	<h3 align="center"> User Table </h3>
-	<table border="1" width="70%" align="center">
+	<table class="table" align="center">
 	<tr>
 		<th>id</th>
 	

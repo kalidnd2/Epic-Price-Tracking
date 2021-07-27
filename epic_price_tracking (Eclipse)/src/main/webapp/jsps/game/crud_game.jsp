@@ -17,6 +17,7 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<style><%@include file="/WEB-INF/lib/css/bootstrap.min.css"%></style>
 
   </head>
   

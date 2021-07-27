@@ -17,7 +17,7 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+<style><%@include file="/WEB-INF/lib/css/bootstrap.min.css"%></style>
   </head>
   
   <body>
@@ -25,11 +25,14 @@
 
 
 	<form action="<c:url value='/CreatePublisher'/>" method="post">
-		<input type="hidden" name="method" value="regist"/>
-		Publisher name    :<input type="text" name="publisherName" value="${form.publisherName}"/>
-		<span style="color: red; font-weight: 900">${errors.username }</span>
-		<br/>
-		<input type="submit" value="Create"/>
+	<input type="hidden" name="method" value="regist"/>
+		<div class="form-group">
+			<label for="epic-publisher-name">Publisher name</label>
+			<input id="epic-publisher-name" class="form-control" required type="text" name="publisherName" value="${form.publisherName }"/>
+			<span style="color: red; font-weight: 900">${errors.publisherName}</span>
+		</div>
+		<input type="submit" class="btn btn-primary" value="Create"/>
+		<a class="btn btn-secondary" href="<c:url value='/jsps/publisher/crud_publisher.jsp'/>" target="body">Cancel</a>
 	</form>
 
   </body>

@@ -14,6 +14,7 @@
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<style><%@include file="/WEB-INF/lib/css/bootstrap.min.css"%></style>
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
@@ -26,6 +27,7 @@
 
 <p style="color: red; font-weight: 900"> ${msg}</p>
 <form action="<c:url value='/UserServletLogin'/>" method="post">
+<input type="hidden" name="method" value="login"/>
 	<input type="hidden" name="method" value="login"/>
 		User：	<input type="text" name="username" /><br/>
 	Password：	<input type="password" name="password" /><br/>
