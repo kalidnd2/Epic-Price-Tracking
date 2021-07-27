@@ -5,10 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-
-
-
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,14 +33,14 @@ public class GenreDao {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
-			          .getConnection("jdbc:mysql://localhost:3306/epic_price_tracking?"
-				              + "user=root&password=password");
+			          .getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+				              + "user=root&password=");
 			
 			
-			String sql = "insert into genre(name,parentGenre) values(?,?)";
+			String sql = "INSERT INTO `genre` (`genre_name`, `parent_genre`) VALUES (?, ?); ";
 			PreparedStatement preparestatement = connect.prepareStatement(sql); 
 		    preparestatement.setString(1,genre.getName());
-		    preparestatement.setString(2,genre.getParentGenre());
+		    preparestatement.setInt(2,(genre.getParentGenre().isEmpty()? Types.NULL: Integer.parseInt(genre.getParentGenre())));
 		    preparestatement.executeUpdate();
 		} catch(SQLException e) {
 			throw new RuntimeException(e);
@@ -56,8 +53,8 @@ public class GenreDao {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/epic_price_tracking?"
-				              + "user=root&password=password");
+					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+				              + "user=root&password=");
 			
 			
 			String sql = "select * from genre";
@@ -67,8 +64,8 @@ public class GenreDao {
 			while(resultSet.next()){
 				Genre genre = new Genre();
 				genre.setId(resultSet.getString("id"));
-				genre.setName(resultSet.getString("name"));
-	    		genre.setParentGenre(resultSet.getString("parentGenre"));
+				genre.setName(resultSet.getString("genre_name"));
+	    		genre.setParentGenre(resultSet.getString("parent_genre"));
 	    		list.add(genre);
 			 }
 			 
@@ -86,8 +83,8 @@ public class GenreDao {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 		    String sql = "select * from genre where id=?";
 			Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/epic_price_tracking?"
-				              + "user=root&password=password");
+					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+				              + "user=root&password=");
 		    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 		    preparestatement.setString(1,id);
 		    ResultSet resultSet = preparestatement.executeQuery();
@@ -96,8 +93,8 @@ public class GenreDao {
 		    	String user_name = resultSet.getString("id");
 		    	if(user_name.equals(id)){
 		    		genre.setId(resultSet.getString("id"));
-		    		genre.setName(resultSet.getString("name"));
-		    		genre.setParentGenre(resultSet.getString("parentGenre"));
+		    		genre.setName(resultSet.getString("genre_name"));
+		    		genre.setParentGenre(resultSet.getString("parent_genre"));
 		    	}
 		    }
 		} catch(SQLException e) {
@@ -110,13 +107,13 @@ public class GenreDao {
 		
 		try {		
 		Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-	    String sql = "UPDATE genre SET name=?,parentGenre=? WHERE id = ?";
+	    String sql = "UPDATE genre SET genre_name=?,parent_genre=? WHERE id = ?";
 		Connection connect = DriverManager
-				.getConnection("jdbc:mysql://localhost:3306/epic_price_tracking?"
-			              + "user=root&password=password");
+				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+			              + "user=root&password=");
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 	    preparestatement.setString(1,genre.getName());
-	    preparestatement.setString(2,genre.getParentGenre());
+	    preparestatement.setInt(2,(genre.getParentGenre().isEmpty()?Types.NULL:Integer.parseInt(genre.getParentGenre())));
 	    preparestatement.setString(3,genre.getId());
 	    System.out.println(preparestatement.toString());
 	    preparestatement.executeUpdate();
@@ -135,8 +132,8 @@ public class GenreDao {
 		Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 	    String sql = "DELETE FROM genre WHERE id = ? ";
 		Connection connect = DriverManager
-				.getConnection("jdbc:mysql://localhost:3306/epic_price_tracking?"
-			              + "user=root&password=password");
+				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+			              + "user=root&password=");
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 	    preparestatement.setString(1,genre.getId());
 	    System.out.println(preparestatement.toString());

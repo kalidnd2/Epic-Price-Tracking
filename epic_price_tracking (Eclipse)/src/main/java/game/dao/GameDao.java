@@ -37,10 +37,10 @@ public class GameDao {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
 			          .getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=skalidindi96");
+				              + "user=root&password=");
 			
 			
-			String sql = "insert into tb_game(name,thumbnail,price) values(?,?,?)";
+			String sql = "insert into game(name,thumbnail,price) values(?,?,?)";
 			PreparedStatement preparestatement = connect.prepareStatement(sql); 
 		    preparestatement.setString(1,game.getName());
 		    preparestatement.setString(2,game.getThumbnail());
@@ -58,10 +58,10 @@ public class GameDao {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=skalidindi96");
+				              + "user=root&password=");
 			
 			
-			String sql = "select * from tb_game";
+			String sql = "select * from game";
 			PreparedStatement preparestatement = connect.prepareStatement(sql); 
 			ResultSet resultSet = preparestatement.executeQuery();
 			
@@ -86,10 +86,10 @@ public class GameDao {
 		try {
 			
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		    String sql = "select * from tb_game where id=?";
+		    String sql = "select * from game where id=?";
 			Connection connect = DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=skalidindi96");
+				              + "user=root&password=");
 		    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 		    preparestatement.setString(1,id);
 		    ResultSet resultSet = preparestatement.executeQuery();
@@ -114,10 +114,10 @@ public class GameDao {
 		
 		try {		
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-	    String sql = "UPDATE tb_game SET name=?,thumbnail=?,price=? WHERE id = ?";
+	    String sql = "UPDATE game SET name=?,thumbnail=?,price=? WHERE id = ?";
 		Connection connect = DriverManager
 				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-			              + "user=root&password=skalidindi96");
+			              + "user=root&password=");
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 	    preparestatement.setString(1,game.getName());
 	    preparestatement.setString(2,game.getThumbnail());
@@ -138,10 +138,10 @@ public class GameDao {
 		
 		try {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-	    String sql = "DELETE FROM tb_game WHERE id = ? ";
+	    String sql = "DELETE FROM game WHERE id = ? ";
 		Connection connect = DriverManager
 				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-			              + "user=root&password=skalidindi96");
+			              + "user=root&password=");
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 	    preparestatement.setString(1,game.getId());
 	    System.out.println(preparestatement.toString());
