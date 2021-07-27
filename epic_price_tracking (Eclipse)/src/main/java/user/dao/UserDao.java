@@ -38,10 +38,10 @@ public class UserDao {
 		User user = new User();
 		try {
 			
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=skalidindi96");
+					.getConnection("jdbc:mysql://localhost:3306/epic_price_tracking?"
+				              + "user=root&password=password");
 			
 		    String sql = "select * from tb_user where username=?";
 		    PreparedStatement preparestatement = connect.prepareStatement(sql); 
@@ -77,10 +77,10 @@ public class UserDao {
 	 */
 	public void add(User user) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
-			          .getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=skalidindi96");
+			          .getConnection("jdbc:mysql://localhost:3306/epic_price_tracking?"
+				              + "user=root&password=password");
 			
 			
 			String sql = "insert into tb_user(username,password,email) values(?,?,?)";
@@ -98,10 +98,10 @@ public class UserDao {
 	public List<Object> findall() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		List<Object> list = new ArrayList<>();
 		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=skalidindi96");
+					.getConnection("jdbc:mysql://localhost:3306/epic_price_tracking?"
+				              + "user=root&password=password");
 			
 			
 			String sql = "select * from tb_user";
@@ -128,11 +128,11 @@ public class UserDao {
 		User user = new User();
 		try {
 			
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 		    String sql = "select * from tb_user where id=?";
 			Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=skalidindi96");
+					.getConnection("jdbc:mysql://localhost:3306/epic_price_tracking?"
+				              + "user=root&password=password");
 		    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 		    preparestatement.setString(1,id);
 		    ResultSet resultSet = preparestatement.executeQuery();
@@ -156,11 +156,11 @@ public class UserDao {
 	public User updateUser(User user) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		
 		try {		
-		Class.forName("com.mysql.jdbc.Driver").newInstance();
+		Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 	    String sql = "UPDATE tb_user SET username=?,password=?,email=? WHERE id = ?";
 		Connection connect = DriverManager
-				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-			              + "user=root&password=skalidindi96");
+				.getConnection("jdbc:mysql://localhost:3306/epic_price_tracking?"
+			              + "user=root&password=password");
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 	    preparestatement.setString(1,user.getUsername());
 	    preparestatement.setString(2,user.getPassword());
@@ -180,11 +180,11 @@ public class UserDao {
 	public User deleteUser(User user) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		
 		try {
-		Class.forName("com.mysql.jdbc.Driver").newInstance();
+		Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 	    String sql = "DELETE FROM tb_user WHERE id = ? ";
 		Connection connect = DriverManager
-				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-			              + "user=root&password=skalidindi96");
+				.getConnection("jdbc:mysql://localhost:3306/epic_price_tracking?"
+			              + "user=root&password=password");
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 	    preparestatement.setString(1,user.getId());
 	    System.out.println(preparestatement.toString());

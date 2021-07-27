@@ -6,12 +6,12 @@
 <html>
   <head>
     
-    <title>GENRE CRUD</title>
+    <title>Create Database</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="keywords" content="keyword1,keyword2">
 	<meta http-equiv="description" content="This is my page">
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
 	<!--
@@ -21,11 +21,17 @@
   </head>
   
   <body>
-  <h1>Genre CRUD Operations: </h1>
-  <a href="<c:url value='/findAll'/>" target="body">Read All Genres</a>&nbsp;&nbsp;
-  <a href="<c:url value='/jsps/genre/create_genre.jsp'/>" target="body">Create Genre</a>&nbsp;&nbsp;
-  <a href="<c:url value='/jsps/genre/update_genre.jsp'/>" target="body">Update Genre</a>&nbsp;&nbsp;
-  <a href="<c:url value='/jsps/genre/delete_genre.jsp'/>" target="body">Delete Genre</a>&nbsp;&nbsp;
+  <h1>Create new Genre:</h1>
+
+
+	<form action="<c:url value='/CreateGenreServlet'/>" method="post">
+		<input type="hidden" name="method" value="regist"/>
+		Name    :<input type="text" name="name" value="${form.name }"/>
+		<span style="color: red; font-weight: 900">${errors.name }</span>
+		ParentGenre：<input type="text" name="parentGenre" value="${form.parentGenre}"/>
+		<br/>
+		<input type="submit" value="Create Genre"/>
+	</form>
 
   </body>
 </html>

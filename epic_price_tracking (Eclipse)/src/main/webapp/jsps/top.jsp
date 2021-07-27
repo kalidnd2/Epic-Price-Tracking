@@ -44,8 +44,8 @@
 			<a href="<c:url value='/jsps/item.jsp'/>" target="body">Initialize Database</a>   |&nbsp;&nbsp;
 			<a href="<c:url value='/jsps/user/crud_home.jsp'/>" target="body">User</a>	|&nbsp; 
 			<a href="<c:url value='/jsps/game/crud_game.jsp'/>" target="body">Game</a>	|&nbsp; 
-			
 			<a href="<c:url value='/jsps/publisher/crud_publisher.jsp'/>" target="body">Publisher</a> |&nbsp; 
+			<a href="<c:url value='/jsps/genre/crud_genre.jsp'/>" target="body">Genre</a>	|&nbsp; 
 
 		</c:otherwise>
 	</c:choose>

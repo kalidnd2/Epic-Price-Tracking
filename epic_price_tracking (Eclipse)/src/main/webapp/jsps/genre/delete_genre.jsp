@@ -6,7 +6,7 @@
 <html>
   <head>
     
-    <title>GENRE CRUD</title>
+    <title>Delete Database</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -21,11 +21,15 @@
   </head>
   
   <body>
-  <h1>Genre CRUD Operations: </h1>
-  <a href="<c:url value='/findAll'/>" target="body">Read All Genres</a>&nbsp;&nbsp;
-  <a href="<c:url value='/jsps/genre/create_genre.jsp'/>" target="body">Create Genre</a>&nbsp;&nbsp;
-  <a href="<c:url value='/jsps/genre/update_genre.jsp'/>" target="body">Update Genre</a>&nbsp;&nbsp;
-  <a href="<c:url value='/jsps/genre/delete_genre.jsp'/>" target="body">Delete Genre</a>&nbsp;&nbsp;
+  <h1>Delete Genre:</h1>
 
+
+	<form action="<c:url value='/DeleteGenreServlet'/>" method="post">
+		<input type="hidden" name="method" value="regist"/>
+		genre id    :<input type="text" name="id" value="${form.id }"/>
+		<span style="color: red; font-weight: 900">${errors.id }</span>
+		<br/>
+		<input type="submit" value="Delete Genre"/>
+	</form>
   </body>
 </html>
