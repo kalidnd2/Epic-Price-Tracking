@@ -24,7 +24,7 @@
   <h1>Create new Genre:</h1>
 
 
-	<form action="<c:url value='/CreateGenreServlet'/>" method="post">
+	<form action="<c:url value='CreateGenreServlet'/>" method="post">
 		<input type="hidden" name="method" value="regist"/>
 		Name    :<input type="text" name="name" value="${form.name }"/>
 		<span style="color: red; font-weight: 900">${errors.name }</span>
