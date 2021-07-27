@@ -8,20 +8,20 @@
 
 </head>
 <body>
-	<h3 align="center"> User Table </h3>
+	<h3 align="center"> Game Table </h3>
 	<table border="1" width="70%" align="center">
 	<tr>
 		<th>id</th>
-	
 		<th>name</th>
-		<th>email</th>
+		<th>thumbnail</th>
+		<th>price</th>
 	</tr>
-<c:forEach items="${UserList}" var="user">
+<c:forEach items="${GameList}" var="game">
 	<tr>
-		<td>${user.id }</td>
-	
-		<td>${user.username }</td>
-		<td>${user.email }</td>
+		<td>${game.id }</td>
+		<td>${game.name }</td>
+		<td>${game.thumbnail }</td>
+		<td>${game.price }</td>
 	</tr>
 </c:forEach>
 </table>

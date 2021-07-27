@@ -1,4 +1,4 @@
-package user.dao;
+package game.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import game.domain.Game;
 import user.domain.User;
 
 
@@ -22,51 +23,7 @@ import user.domain.User;
  * @author changxin bai
  *
  */
-public class UserDao {
-	
-
-	
-	/**
-	 * get the search result with username 
-	 * @param username
-	 * @return
-	 * @throws ClassNotFoundException 
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
-	 */
-	public User findByUsername(String username) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
-		User user = new User();
-		try {
-			
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=skalidindi96");
-			
-		    String sql = "select * from tb_user where username=?";
-		    PreparedStatement preparestatement = connect.prepareStatement(sql); 
-		    preparestatement.setString(1,username);
-		    ResultSet resultSet = preparestatement.executeQuery();
-		    //ResultSet resultSet  = preparestatement.executeUpdate();
-		    while(resultSet.next()){
-		    	String user_name = resultSet.getString("username");
-		    	if(user_name.equals(username)){
-		    		user.setUsername(resultSet.getString("username"));
-		    		user.setPassword(resultSet.getString("password"));
-		    		user.setEmail(resultSet.getString("email"));
-		    		
-		    	}
-		    }
-		
-		    
-		} catch(SQLException e) {
-			throw new RuntimeException(e);
-		}
-		return user;
-	}
-	
-	
-	
+public class GameDao {
 	
 	/**
 	 * insert User
@@ -75,7 +32,7 @@ public class UserDao {
 	 * @throws IllegalAccessException 
 	 * @throws InstantiationException 
 	 */
-	public void add(User user) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+	public void add(Game game) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
@@ -83,11 +40,11 @@ public class UserDao {
 				              + "user=root&password=skalidindi96");
 			
 			
-			String sql = "insert into tb_user(username,password,email) values(?,?,?)";
+			String sql = "insert into tb_game(name,thumbnail,price) values(?,?,?)";
 			PreparedStatement preparestatement = connect.prepareStatement(sql); 
-		    preparestatement.setString(1,user.getUsername());
-		    preparestatement.setString(2,user.getPassword());
-		    preparestatement.setString(3,user.getEmail());
+		    preparestatement.setString(1,game.getName());
+		    preparestatement.setString(2,game.getThumbnail());
+		    preparestatement.setString(3,game.getPrice());
 		    preparestatement.executeUpdate();
 		} catch(SQLException e) {
 			throw new RuntimeException(e);
@@ -104,17 +61,17 @@ public class UserDao {
 				              + "user=root&password=skalidindi96");
 			
 			
-			String sql = "select * from tb_user";
+			String sql = "select * from tb_game";
 			PreparedStatement preparestatement = connect.prepareStatement(sql); 
 			ResultSet resultSet = preparestatement.executeQuery();
 			
 			while(resultSet.next()){
-				User user = new User();
-				user.setId(resultSet.getString("id"));
-				user.setUsername(resultSet.getString("username"));
-	    		user.setPassword(resultSet.getString("password"));
-	    		user.setEmail(resultSet.getString("email"));
-	    		list.add(user);
+				Game game = new Game();
+				game.setId(resultSet.getString("id"));
+				game.setName(resultSet.getString("name"));
+	    		game.setThumbnail(resultSet.getString("thumbnail"));
+	    		game.setPrice(resultSet.getString("price"));
+	    		list.add(game);
 			 }
 			 
 		} catch(SQLException e) {
@@ -124,12 +81,12 @@ public class UserDao {
 		
 	}
 	
-	public User findById(String id) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
-		User user = new User();
+	public Game findById(String id) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+		Game game = new Game();
 		try {
 			
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		    String sql = "select * from tb_user where id=?";
+		    String sql = "select * from tb_game where id=?";
 			Connection connect = DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
 				              + "user=root&password=skalidindi96");
@@ -140,60 +97,60 @@ public class UserDao {
 		    while(resultSet.next()){
 		    	String user_name = resultSet.getString("id");
 		    	if(user_name.equals(id)){
-		    		user.setId(resultSet.getString("id"));
-		    		user.setUsername(resultSet.getString("username"));
-		    		user.setPassword(resultSet.getString("password"));
-		    		user.setEmail(resultSet.getString("email"));
+		    		game.setId(resultSet.getString("id"));
+		    		game.setName(resultSet.getString("name"));
+		    		game.setThumbnail(resultSet.getString("thumbnail"));
+		    		game.setPrice(resultSet.getString("price"));
 		    		
 		    	}
 		    }
 		} catch(SQLException e) {
 			throw new RuntimeException(e);
 		}
-		return user;
+		return game;
 	}
 	
-	public User updateUser(User user) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+	public Game updateGame(Game game) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		
 		try {		
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-	    String sql = "UPDATE tb_user SET username=?,password=?,email=? WHERE id = ?";
+	    String sql = "UPDATE tb_game SET name=?,thumbnail=?,price=? WHERE id = ?";
 		Connection connect = DriverManager
 				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
 			              + "user=root&password=skalidindi96");
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
-	    preparestatement.setString(1,user.getUsername());
-	    preparestatement.setString(2,user.getPassword());
-	    preparestatement.setString(3,user.getEmail());
-	    preparestatement.setString(4,user.getId());
+	    preparestatement.setString(1,game.getName());
+	    preparestatement.setString(2,game.getThumbnail());
+	    preparestatement.setString(3,game.getPrice());
+	    preparestatement.setString(4,game.getId());
 	    System.out.println(preparestatement.toString());
 	    preparestatement.executeUpdate();
 
 	} catch(SQLException e) {
 		throw new RuntimeException(e);
 	}
-	return user;
+	return game;
 		
 		
 	}
 	
-	public User deleteUser(User user) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+	public Game deleteGame(Game game) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		
 		try {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-	    String sql = "DELETE FROM tb_user WHERE id = ? ";
+	    String sql = "DELETE FROM tb_game WHERE id = ? ";
 		Connection connect = DriverManager
 				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
 			              + "user=root&password=skalidindi96");
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
-	    preparestatement.setString(1,user.getId());
+	    preparestatement.setString(1,game.getId());
 	    System.out.println(preparestatement.toString());
 	    preparestatement.executeUpdate();
 
 	} catch(SQLException e) {
 		throw new RuntimeException(e);
 	}
-	return user;
+	return game;
 		
 		
 	}

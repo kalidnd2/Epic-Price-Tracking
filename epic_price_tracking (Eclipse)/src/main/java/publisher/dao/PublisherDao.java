@@ -19,7 +19,7 @@ public class PublisherDao {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
 			          .getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=");
+				              + "user=root&password=skalidindi96");
 			
 			
 			String sql = "insert into publisher(publisher_name) values(?)";
@@ -37,7 +37,7 @@ public class PublisherDao {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=");
+				              + "user=root&password=skalidindi96");
 			
 			
 			String sql = "select * from publisher";
@@ -67,7 +67,7 @@ public class PublisherDao {
 		    String sql = "select * from publisher where id=?";
 			Connection connect = DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=");
+				              + "user=root&password=skalidindi96");
 		    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 		    preparestatement.setString(1,id);
 		    ResultSet resultSet = preparestatement.executeQuery();
@@ -92,7 +92,7 @@ public class PublisherDao {
 	    String sql = "UPDATE publisher SET publisher_name=? WHERE id = ?";
 		Connection connect = DriverManager
 				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-			              + "user=root&password=");
+			              + "user=root&password=skalidindi96");
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 	    preparestatement.setString(1,publisher.getPublisherName());
 	    preparestatement.setString(2,publisher.getId());
@@ -112,7 +112,7 @@ public class PublisherDao {
 	    String sql = "DELETE FROM publisher WHERE id = ? ";
 		Connection connect = DriverManager
 				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-			              + "user=root&password=");
+			              + "user=root&password=skalidindi96");
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 	    preparestatement.setString(1,publisher.getId());
 	    System.out.println(preparestatement.toString());
