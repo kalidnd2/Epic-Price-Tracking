@@ -16,7 +16,7 @@ public class InitializeDBDao {
 	
 	
 	/**
-	 * get the search result with username 
+	 * create the tables for the database
 	 * @param username
 	 * @return
 	 * @throws ClassNotFoundException 
