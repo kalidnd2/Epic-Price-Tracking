@@ -165,9 +165,6 @@ def main():
     )
 
     body = driver.find_element_by_tag_name('body') 
-    for i in range(7):
-        body.send_keys(Keys.PAGE_DOWN)
-        time.sleep(0.5)
 
     genreLink = driver.find_element_by_xpath("//div[@data-component='FilterSectionTitleText' and text()='Genre']")
     genreTab = genreLink.find_element_by_xpath("./../../..")
@@ -183,6 +180,7 @@ def main():
             time.sleep(2)
         
         genre.click() 
+        time.sleep(3)
         driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL + Keys.HOME)
         previousGenre = genre
         genreGames = getAllGenreGames(driver)  
