@@ -36,10 +36,10 @@
     <c:choose>
 		<c:when test="${empty sessionScope.session_user }">
 		<li class="nav-item ">
-        	<a class="nav-link" href="<c:url value='/jsps/user/login.jsp'/>" target="body">Login <span class="sr-only">(current)</span></a>
+        	<a class="nav-link" href="<c:url value='/jsps/user/login.jsp'/>" target="_parent">Login <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-        	<a class="nav-link" href="<c:url value='/jsps/user/regist.jsp'/>" target="body">Register</a>
+        	<a class="nav-link" href="<c:url value='/jsps/user/regist.jsp'/>" target="_parent">Register</a>
       	</li>
 		</c:when>
 		<c:otherwise>
@@ -61,9 +61,19 @@
         <li class="nav-item">
         	<a class="nav-link" href="<c:url value='/jsps/publisher/crud_publisher.jsp'/>" target="body">Publisher</a>
       	</li>
+      	<li class="nav-item">
+<%--       	<form id="my_list_form" action="<c:url value='/CreateServlet2'/>" method="get" target="body">
+      		<input hidden type="text" name="userId" value=" ${sessionScope.session_user.id}">
+      		<a class="nav-link" type="submit" target="body" onclick="document.getElementById('my_list_form').submit(); return false;" >My Tracking List</a>
+      	</form> --%>
+      		<a class="nav-link" id="my-tracking-list" href="<c:url value='/UserGame'/>" target="body">My Tracking List</a>
+      	</li>
 		</c:otherwise>
 	</c:choose>
     </ul>
+    <span class="navbar-text">
+    	Welcome, ${sessionScope.session_user.username }
+    </span>
   </div>
 </nav>
  <!-- ------------------------ --> 

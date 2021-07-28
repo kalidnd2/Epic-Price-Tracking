@@ -28,10 +28,17 @@
 <p style="color: red; font-weight: 900"> ${msg}</p>
 <form action="<c:url value='/UserServletLogin'/>" method="post">
 <input type="hidden" name="method" value="login"/>
-	<input type="hidden" name="method" value="login"/>
-		User：	<input type="text" name="username" /><br/>
-	Password：	<input type="password" name="password" /><br/>
-	<input type="submit" value="Login"/>
+	<div class="form-group">
+		<label for="epic-user-name">Name</label>
+		<input id="epic-user-name" class="form-control" required type="text" name="username" value="${form.username }"/>
+		<span style="color: red; font-weight: 900">${errors.username }</span>
+	</div>	
+	<div class="form-group">
+		<label for="epic-user-password">Password</label>
+		<input id="epic-user-password" class="form-control" required type="password" name="password" value="${form.password }"/>
+		<span style="color: red; font-weight: 900">${errors.password }</span>
+	</div>
+	<input type="submit" class="btn btn-primary" value="Login"/>
 </form>
   </body>
 </html>

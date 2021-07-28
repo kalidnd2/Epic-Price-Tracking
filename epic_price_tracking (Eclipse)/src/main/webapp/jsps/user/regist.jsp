@@ -30,20 +30,22 @@
    --%>
 <p style="color: red; font-weight: 900">${msg }</p>
 <form action="<c:url value='/UserServletRegister'/>" method="post">
+<input type="hidden" name="method" value="regist"/>
 	<div class="form-group">
-	<input type="hidden" name="method" value="regist"/>
-	<label for="epic-user-name">Name</label>
-	<input id="epic-user-name" required type="text" name="username" value="${form.username }"/>
-	<span style="color: red; font-weight: 900">${errors.username }</span>
-	<br/>
-	<label for="epic-user-password">Password</label>
-	<input id="epic-user-password" required type="password" name="password" value="${form.password }"/>
-	<span style="color: red; font-weight: 900">${errors.password }</span>
-	<br/>
-	<label for="epic-user-email">Email address</label>
-	<input id="epic-user-email" required type="email" name="email" value="${form.email }"/>
-	<span style="color: red; font-weight: 900">${errors.email }</span>
-	<br/>
+		<label for="epic-user-name">Name</label>
+		<input id="epic-user-name" class="form-control" required type="text" name="username" value="${form.username }"/>
+		<span style="color: red; font-weight: 900">${errors.username }</span>
+	</div>	
+	<div class="form-group">
+		<label for="epic-user-password">Password</label>
+		<input id="epic-user-password" class="form-control" required type="password" name="password" value="${form.password }"/>
+		<span style="color: red; font-weight: 900">${errors.password }</span>
+	</div>	
+	<div class="form-group">	
+		<label for="epic-user-email">Email address</label>
+		<input id="epic-user-email" class="form-control" required type="email" name="email" value="${form.email }"/>
+		<span style="color: red; font-weight: 900">${errors.email }</span>
+	</div>
 	<input type="submit" class="btn btn-primary" value="Register"/>
 </div>
 

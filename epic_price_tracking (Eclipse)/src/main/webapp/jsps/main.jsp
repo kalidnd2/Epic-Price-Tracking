@@ -24,10 +24,6 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<style type="text/css">
-
-		body{
-			text-align:center;
-		}
 		iframe {
 			width: 100%;
 			height: 100%;
