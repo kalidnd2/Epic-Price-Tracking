@@ -216,6 +216,28 @@
     <url-pattern>/updateGenre</url-pattern>
   </servlet-mapping>  
   
+   <servlet>
+    <description></description>
+    <display-name>addUserGame</display-name>
+    <servlet-name>addUserGame</servlet-name>
+    <servlet-class>tracking.servlet.UserGameTrackingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addUserGame</servlet-name>
+    <url-pattern>/UserGame</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
+    <description></description>
+    <display-name>removeUserGame</display-name>
+    <servlet-name>removeUserGame</servlet-name>
+    <servlet-class>tracking.servlet.RemoveUserGameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>removeUserGame</servlet-name>
+    <url-pattern>/removeUserGame</url-pattern>
+  </servlet-mapping> 
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>login.jsp</welcome-file>
