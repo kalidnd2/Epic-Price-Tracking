@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import game.domain.Game;
+import tracking.MyGame;
+import tracking.UserGame;
 import user.domain.User;
 
 
@@ -61,16 +63,19 @@ public class GameDao {
 				              + "user=root&password=");
 			
 			
-			String sql = "select * from game";
+			String sql = "SELECT game.id,game.name,game.thumbnail,game.price,publisher.publisher_name from game \r\n"
+					+ "LEFT JOIN game_publisher AS GP ON game.id = GP.game_id \r\n"
+					+ "LEFT JOIN publisher ON GP.publisher_id = publisher.id ";
 			PreparedStatement preparestatement = connect.prepareStatement(sql); 
 			ResultSet resultSet = preparestatement.executeQuery();
 			
 			while(resultSet.next()){
-				Game game = new Game();
+				MyGame game = new MyGame();
 				game.setId(resultSet.getString("id"));
 				game.setName(resultSet.getString("name"));
 	    		game.setThumbnail(resultSet.getString("thumbnail"));
 	    		game.setPrice(resultSet.getString("price"));
+	    		game.setPublisher(resultSet.getString("publisher_name"));
 	    		list.add(game);
 			 }
 			 
@@ -132,6 +137,69 @@ public class GameDao {
 	return game;
 		
 		
+	}
+	
+	/**
+	 * Function to query the list of games based on genre, publisher or both
+	 * @param genre
+	 * @param publisher
+	 * @return
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 * @throws ClassNotFoundException
+	 */
+	public List<Object> queryGames(String genre, String publisher) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		ArrayList<Object> list = new ArrayList<Object>();
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+		try {
+			Connection connect = DriverManager
+					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+				              + "user=root&password=");
+			
+			if(genre.isEmpty() && publisher.isEmpty()) {
+				return findall();
+			}
+			
+			PreparedStatement preparestatement = null;
+			if(!genre.isEmpty() && !publisher.isEmpty()) { //return list of games belonging to genre and publisher
+				String sql = "SELECT G.id,G.name,G.thumbnail,G.price,publisher.publisher_name FROM game G "
+						+ "LEFT JOIN game_publisher AS GP ON G.id = GP.game_id "
+						+ "LEFT JOIN publisher ON GP.publisher_id = publisher.id WHERE GP.publisher_id= ? "
+						+ "AND EXISTS (SELECT * FROM game_genre WHERE game_genre.game_id = G.id AND game_genre.genre_id = ?)";
+				preparestatement = connect.prepareStatement(sql);
+				preparestatement.setString(1,publisher);
+			    preparestatement.setString(2,genre);
+			}else if(!genre.isEmpty()) { // return a list of games belonging to the genre
+				String sql = "SELECT G.id,G.name,G.thumbnail,G.price,publisher.publisher_name FROM game G "
+						+ "LEFT JOIN game_publisher AS GP ON G.id = GP.game_id "
+						+ "LEFT JOIN publisher ON GP.publisher_id = publisher.id "
+						+ "WHERE EXISTS (SELECT * FROM game_genre WHERE game_genre.game_id = G.id AND game_genre.genre_id = ?)";
+				preparestatement = connect.prepareStatement(sql);
+				preparestatement.setString(1,genre);
+			}else if(!publisher.isEmpty()) { //return a list of games belonging to publisher
+				String sql = "SELECT G.id,G.name,G.thumbnail,G.price,publisher.publisher_name FROM game G "
+						+ "LEFT JOIN game_publisher AS GP ON G.id = GP.game_id "
+						+ "LEFT JOIN publisher ON GP.publisher_id = publisher.id WHERE GP.publisher_id=?";
+				preparestatement = connect.prepareStatement(sql);
+				preparestatement.setString(1,publisher);
+			}
+			
+			ResultSet resultSet = preparestatement.executeQuery();
+			
+			while(resultSet.next()){
+				MyGame game = new MyGame();
+				game.setId(resultSet.getString("id"));
+				game.setName(resultSet.getString("name"));
+	    		game.setThumbnail(resultSet.getString("thumbnail"));
+	    		game.setPrice(resultSet.getString("price"));
+	    		game.setPublisher(resultSet.getString("publisher_name"));
+	    		list.add(game);
+			 }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 	
 	public Game deleteGame(Game game) throws ClassNotFoundException, InstantiationException, IllegalAccessException {

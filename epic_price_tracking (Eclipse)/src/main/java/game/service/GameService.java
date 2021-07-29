@@ -57,5 +57,8 @@ public class GameService {
 		gameDao.deleteGame(game);
 	}
 	
+	public List<Object> query(String genreId, String publisherID) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		return gameDao.queryGames(genreId, publisherID);
+	}
 	
 }

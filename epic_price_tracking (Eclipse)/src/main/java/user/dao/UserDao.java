@@ -40,8 +40,8 @@ public class UserDao {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/epic_price_tracking?"
-				              + "user=root&password=password");
+					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+				              + "user=root&password=");
 			
 		    String sql = "select * from tb_user where username=?";
 		    PreparedStatement preparestatement = connect.prepareStatement(sql); 
@@ -54,6 +54,7 @@ public class UserDao {
 		    		user.setUsername(resultSet.getString("username"));
 		    		user.setPassword(resultSet.getString("password"));
 		    		user.setEmail(resultSet.getString("email"));
+		    		user.setId(resultSet.getString("id"));
 		    		
 		    	}
 		    }
@@ -79,8 +80,8 @@ public class UserDao {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
-			          .getConnection("jdbc:mysql://localhost:3306/epic_price_tracking?"
-				              + "user=root&password=password");
+			          .getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+				              + "user=root&password=");
 			
 			
 			String sql = "insert into tb_user(username,password,email) values(?,?,?)";
@@ -100,8 +101,8 @@ public class UserDao {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/epic_price_tracking?"
-				              + "user=root&password=password");
+					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+				              + "user=root&password=");
 			
 			
 			String sql = "select * from tb_user";
@@ -131,8 +132,8 @@ public class UserDao {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 		    String sql = "select * from tb_user where id=?";
 			Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/epic_price_tracking?"
-				              + "user=root&password=password");
+					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+				              + "user=root&password=");
 		    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 		    preparestatement.setString(1,id);
 		    ResultSet resultSet = preparestatement.executeQuery();
@@ -159,8 +160,8 @@ public class UserDao {
 		Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 	    String sql = "UPDATE tb_user SET username=?,password=?,email=? WHERE id = ?";
 		Connection connect = DriverManager
-				.getConnection("jdbc:mysql://localhost:3306/epic_price_tracking?"
-			              + "user=root&password=password");
+				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+			              + "user=root&password=");
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 	    preparestatement.setString(1,user.getUsername());
 	    preparestatement.setString(2,user.getPassword());
@@ -183,8 +184,8 @@ public class UserDao {
 		Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 	    String sql = "DELETE FROM tb_user WHERE id = ? ";
 		Connection connect = DriverManager
-				.getConnection("jdbc:mysql://localhost:3306/epic_price_tracking?"
-			              + "user=root&password=password");
+				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+			              + "user=root&password=");
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 	    preparestatement.setString(1,user.getId());
 	    System.out.println(preparestatement.toString());
