@@ -238,6 +238,33 @@
     <url-pattern>/removeUserGame</url-pattern>
   </servlet-mapping> 
   
+  
+  <servlet>
+    <description></description>
+    <display-name>findQueriedGames</display-name>
+    <servlet-name>findQueriedGames</servlet-name>
+    <servlet-class>game.web.servlet.QueriedGameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>findQueriedGames</servlet-name>
+    <url-pattern>/queryGames</url-pattern>
+  </servlet-mapping> 
+  
+  
+   <servlet>
+    <description></description>
+    <display-name>FindGenrePublisher</display-name>
+    <servlet-name>FindGenrePublisher</servlet-name>
+    <servlet-class>game.web.servlet.FindGenrePublisherServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FindGenrePublisher</servlet-name>
+    <url-pattern>/findGenrePublisher</url-pattern>
+  </servlet-mapping> 
+  
+  
+  
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>login.jsp</welcome-file>
