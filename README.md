@@ -25,8 +25,8 @@ This project populates the database using a python web scraping tool which fetch
 5. Click on initialize database to setup the database tables.
 6. Next you will need to run the web scraping script which will populate the database tables with information from the epic games store.
     1. To run the pyton script you will need to install selenium and mysql python dependencies.
-    2. Next download geckodriver for firefox browser. (https://github.com/mozilla/geckodriver/releases)
-    3. Modify the <b>getDetailsScraper.py</b> file and change the driver path to point to the geckodriver you downloaded.
+    2. Download geckodriver for firefox browser. (https://github.com/mozilla/geckodriver/releases)
+    3. Modify the <b>getDetailsScraper.py</b> file and change the driver path to point to the geckodriver downloaded.
     4. Execute <b>"py getDetailsScraper.py"</b> (can take approximately 5 mins)
     
 7. After the script is done executing. Navigate to the Home tab in the webpage to see the list of all games.
