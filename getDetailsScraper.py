@@ -39,7 +39,13 @@ def getAllGenreGames(driver):
         for game in games:
             title = game.find_element_by_xpath('.//*[@data-testid="offer-title-info-title"]').text
             subtitle = game.find_element_by_xpath('.//*[@data-testid="offer-title-info-subtitle"]').text
-            pricing = game.find_element_by_xpath('.//*[@class="css-nxq7ez-PriceLayout__rowItem" or @class="css-1mc6sjq"]').text
+            pricing1 = game.find_element_by_xpath('.//*[@class="css-nxq7ez-PriceLayout__rowItem" or @class="css-1mc6sjq"]').text
+            pricing2 = game.find_element_by_xpath('.//*[@class="css-1mc6sjq"]').text
+
+            if pricing1 and '%' not in pricing1: #% is usually in sale texts and not in actual price
+                pricing = pricing1
+            else:
+                pricing = pricing2    
 
             thumbnail = game.find_element_by_xpath('.//*[@data-testid="offer-card-image-portrait"]')
             thumbnail = WebDriverWait(thumbnail, 10).until(EC.presence_of_element_located((By.TAG_NAME, "img"))) #waits until the thumbnail is loaded in the browser
@@ -79,6 +85,7 @@ def insertGamesWithGenre(genre, games):
         gameId = insertGameifNotExists(game)
         insertGenreGame(genreID,gameId)
         insertPublisherGame(publisherID,gameId)
+        insertPriceRecordForGame(game,gameId)
         
 
 def insertGameifNotExists(game):
@@ -152,7 +159,13 @@ def insertPublisherGame(publisherId, gameId):
         stmt= "INSERT INTO game_publisher (game_id, publisher_id) VALUES (?,?)"
         CURSOR1.execute(stmt, tuple([gameId, publisherId]))
        
-    DB.commit()               
+    DB.commit()   
+
+def insertPriceRecordForGame(game, gameId):
+    stmt = "INSERT INTO price_record (game_id, timestamp, current_price) VALUES (?,?,?)"
+    CURSOR1.execute(stmt, tuple([gameId, time.strftime('%Y-%m-%d %H:%M:%S'), game['pricing']]))
+    DB.commit() 
+
 
 
 def main():
