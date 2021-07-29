@@ -37,9 +37,9 @@
 		<iframe frameborder="0" src="<c:url value='/jsps/top.jsp'/>" name="top"></iframe>
 	</div>
 	<div style="padding-top: 20px;  height:100%">
-	<div class="container">
+	
 		<iframe frameborder="0" src="<c:url value='/jsps/body.jsp'/>" name="body"></iframe>
-	</div>
+	
 	</div>
 </div>
   </body>

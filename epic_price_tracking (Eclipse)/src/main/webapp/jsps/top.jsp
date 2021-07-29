@@ -47,7 +47,7 @@
         	<a class="nav-link" href="<c:url value='/jsps/item.jsp'/>" target="body">Initialize Database</a>
       	</li>
       	<li class="nav-item">
-        	<a class="nav-link" href="<c:url value='/findAllgames'/>" target="body">Home</a>
+        	<a class="nav-link" href="<c:url value='/jsps/HomePage.jsp'/>" target="body">Home</a>
       	</li>
       	<li class="nav-item ">
         	<a class="nav-link" href="<c:url value='/jsps/user/crud_home.jsp'/>" target="body">User</a>
