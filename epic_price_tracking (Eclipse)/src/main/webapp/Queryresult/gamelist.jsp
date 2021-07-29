@@ -52,6 +52,7 @@ display:none;
 				</div>
 			  <div class="card-body body-padding">
 			    <p class="card-text no-margin">${game.name}</p>
+			    <p class="card-test no-margin">${game.publisher}</p>
 			    <p class="card-test no-margin">Current price:<b>${game.price}</b></p>
 			    <button class="btn btn-small btn-primary custom-btn" onclick="javascript:myFunction(${game.id},${sessionScope.session_user.id})">Track</button>
 			  </div>
