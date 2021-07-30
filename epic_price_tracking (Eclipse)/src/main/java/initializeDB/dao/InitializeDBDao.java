@@ -1,6 +1,7 @@
 package initializeDB.dao;
 
 import java.sql.Connection;
+import config.*;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,8 +29,8 @@ public class InitializeDBDao {
 			
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=skalidindi96");
+					.getConnection("jdbc:mysql://localhost:3306/" + DBConfig.db_name + "?"
+				              + "user="+DBConfig.db_user+"&password="+DBConfig.db_password);
 		    
 			Statement statement = connect.createStatement();
 			
@@ -188,8 +189,8 @@ public class InitializeDBDao {
 					
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-						              + "user=root&password=skalidindi96");
+						.getConnection("jdbc:mysql://localhost:3306/" + DBConfig.db_name + "?"
+					              + "user="+DBConfig.db_user+"&password="+DBConfig.db_password);
 				    
 				Statement statement = connect.createStatement();
 				
