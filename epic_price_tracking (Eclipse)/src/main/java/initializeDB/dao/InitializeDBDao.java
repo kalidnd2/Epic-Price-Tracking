@@ -28,8 +28,8 @@ public class InitializeDBDao {
 			
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=skalidindi96");
+					.getConnection("jdbc:mysql://localhost:3306/" + game.Config.db_name + "?"
+				              + "user="+game.Config.db_user+"&password="+game.Config.db_password);
 		    
 			Statement statement = connect.createStatement();
 			
@@ -188,8 +188,8 @@ public class InitializeDBDao {
 					
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-						              + "user=root&password=skalidindi96");
+						.getConnection("jdbc:mysql://localhost:3306/" + game.Config.db_name + "?"
+					              + "user="+game.Config.db_user+"&password="+game.Config.db_password);
 				    
 				Statement statement = connect.createStatement();
 				
