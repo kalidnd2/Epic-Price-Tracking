@@ -354,3 +354,59 @@ JavaScript error: http://localhost:8080/CS480Demo/queryGames, line 19: TypeError
 console.log: WebExtensions: reset-default-search: starting.
 console.log: WebExtensions: reset-default-search: No addons in our list are installed.
 JavaScript error: http://localhost:8080/CS480Demo/queryGames, line 19: TypeError: g is undefined
+JavaScript error: http://localhost:8080/CS480Demo/UserServletLogin, line 29: TypeError: g is undefined
+JavaScript error: http://localhost:8080/CS480Demo/jsps/top.jsp, line 28: TypeError: g is undefined
+JavaScript error: http://localhost:8080/CS480Demo/jsps/HomePage.jsp, line 19: TypeError: g is undefined
+JavaScript error: http://localhost:8080/CS480Demo/findGenrePublisher, line 27: TypeError: g is undefined
+JavaScript error: http://localhost:8080/CS480Demo/findAllgames, line 19: TypeError: g is undefined
+JavaScript error: http://localhost:8080/CS480Demo/jsps/HomePage.jsp, line 19: TypeError: g is undefined
+JavaScript error: http://localhost:8080/CS480Demo/findGenrePublisher, line 27: TypeError: g is undefined
+JavaScript error: http://localhost:8080/CS480Demo/findAllgames, line 19: TypeError: g is undefined
+JavaScript error: http://localhost:8080/CS480Demo/queryGames, line 19: TypeError: g is undefined
+JavaScript error: http://localhost:8080/CS480Demo/jsps/HomePage.jsp, line 19: TypeError: g is undefined
+JavaScript error: http://localhost:8080/CS480Demo/findGenrePublisher, line 27: TypeError: g is undefined
+JavaScript error: http://localhost:8080/CS480Demo/findAllgames, line 19: TypeError: g is undefined
+JavaScript error: http://localhost:8080/CS480Demo/queryGames, line 19: TypeError: g is undefined
+1627677829048	Marionette	INFO	Stopped listening on port 56756
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1627678469074	geckodriver	INFO	Listening on 127.0.0.1:60442
+1627678470092	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mk/zkqwr15s00zdkbcslm8yrtgm0000gn/T/rust_mozprofile5FdEjW"
+1627678470747	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/mk/zkqwr15s00zdkbcslm8yrtgm0000gn/T/rust_mozprofile5FdEjW/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 243"  data: no]
+1627678472773	Marionette	INFO	Listening on port 60454
+1627678472874	Marionette	WARN	TLS certificate errors will be ignored for this session
+1627678626294	Marionette	INFO	Stopped listening on port 60454
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1627678725530	geckodriver	INFO	Listening on 127.0.0.1:60597
+1627678726550	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/mk/zkqwr15s00zdkbcslm8yrtgm0000gn/T/rust_mozprofilec4vqL7"
+1627678727121	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/mk/zkqwr15s00zdkbcslm8yrtgm0000gn/T/rust_mozprofilec4vqL7/search.json.mozlz4", (void 0)))
+console.error: BackgroundUpdate: 
+  _reasonsToNotScheduleUpdates: Failed to check for Maintenance Service Registry Key: [Exception... "Component returned failure code: 0x80004001 (NS_ERROR_NOT_IMPLEMENTED) [nsIUpdateProcessor.getServiceRegKeyExists]"  nsresult: "0x80004001 (NS_ERROR_NOT_IMPLEMENTED)"  location: "JS frame :: resource://gre/modules/BackgroundUpdate.jsm :: _reasonsToNotScheduleUpdates :: line 243"  data: no]
+1627678729195	Marionette	INFO	Listening on port 60608
+1627678729221	Marionette	WARN	TLS certificate errors will be ignored for this session
+1627678745798	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://marionette/content/sync.js:237:19
+TimedPromise@chrome://marionette/content/sync.js:222:10
+interaction.flushEventLoop@chrome://marionette/content/interaction.js:431:10
+webdriverClickElement@chrome://marionette/content/interaction.js:179:31
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+1627679159806	Marionette	INFO	Stopped listening on port 60608
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
