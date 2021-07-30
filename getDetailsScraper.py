@@ -12,7 +12,7 @@ import os
 DB = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="skalidindi96",
+        password="password",
         database="epic_tracking",
         auth_plugin='mysql_native_password'
     )
@@ -46,7 +46,11 @@ def getAllGenreGames(driver):
             if pricing1 and '%' not in pricing1: #% is usually in sale texts and not in actual price
                 pricing = pricing1
             else:
-                pricing = pricing2    
+                pricing = pricing2
+            if pricing == "Free":
+                pricing = "$00.00" 
+            if pricing == "Coming Soon":
+                pricing = None
 
             thumbnail = game.find_element_by_xpath('.//*[@data-testid="offer-card-image-portrait"]')
             thumbnail = WebDriverWait(thumbnail, 10).until(EC.presence_of_element_located((By.TAG_NAME, "img"))) #waits until the thumbnail is loaded in the browser
@@ -55,7 +59,7 @@ def getAllGenreGames(driver):
             game_obj = {
                 'title': title,
                 'publisher': subtitle,
-                'pricing': pricing,
+                'pricing': float("00.00" if pricing == None else pricing.strip()[1:]),
                 'thumbnail': thumbnail
             }
 
@@ -176,8 +180,8 @@ def main():
 #   driver = webdriver.Firefox(executable_path=':/')
 
     PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-    DRIVER_BIN = os.path.join(PROJECT_ROOT, "geckodriver")
-    driver = webdriver.Firefox(executable_path = DRIVER_BIN)
+    DRIVER_BIN = os.path.join(PROJECT_ROOT, "chromedriver.exe")
+    driver = webdriver.Chrome(executable_path = DRIVER_BIN)
     driver.get(url)
 
     

@@ -65,7 +65,7 @@ public class InitializeDBDao {
 					+ "    id INT AUTO_INCREMENT,"
 					+ "    name VARCHAR(215) NOT NULL,"
 					+ "    thumbnail VARCHAR(512),"
-					+ "    price INT,\r\n"
+					+ "    price DECIMAL(5,2),\r\n"
 					+ ""
 					+ "    PRIMARY KEY (id)\r\n"
 					+ ");";
@@ -76,7 +76,7 @@ public class InitializeDBDao {
 					+ "    id INT AUTO_INCREMENT,"
 					+ "    game_id INT NOT NULL,"
 					+ "    timestamp DATETIME NOT NULL,"
-					+ "    current_price BIGINT NOT NULL,"
+					+ "    current_price DECIMAL(5,2) NOT NULL,"
 					+ ""
 					+ "    PRIMARY KEY (id),"
 					+ "    FOREIGN KEY (game_id) REFERENCES game(id)"
