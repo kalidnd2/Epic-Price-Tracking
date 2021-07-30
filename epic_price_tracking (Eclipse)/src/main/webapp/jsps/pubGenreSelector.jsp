@@ -61,17 +61,35 @@
 	  </div>
     </div>
   </div>
-  <!-- testing for the lowestPrice  
+ 
+ 
+ 
+ 
+ 
+ 
+  </div>
+  <form action="<c:url value='/queryGames'/>" id="filter-form" method="post" target="content">
+  	<input type="text" id="genre-id-val" name="genreId" value="" hidden/>
+  	<input type="text" id="publisher-id-val" name="publisherId" value="" hidden/> 
+  	<input type="submit" class="btn btn-primary" value="Apply filter" style="padding:10px"/>
+  	<input type="button" onclick="clearFilter()" class="btn btn-secondary" value="Clear filter" style="padding:10px"/>
+  </form>
+  
+  
   
   <div class="card" >
     <div class="card-header" onclick="showLowestPriceTab();" id="headingTwo">
       <h2 class="mb-0">
         <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Game
+          Sort By Price
         </button>
+        
       </h2>
     </div>
-    <div id="collapseTwo" class="collapse publisher-content" aria-labelledby="headingTwo" data-parent="#accordionExample">
+
+
+ <!--   
+ 	<div id="collapseTwo" class="collapse publisher-content" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div class="card-body" style="padding:0px">
 		<ul class="list-group publishers-list">
 		  <c:forEach items="${publisherList}" var="publisher">
@@ -80,18 +98,33 @@
 		</ul>
 	  </div>
     </div>
+     -->
+
   </div>
- --> 
-  </div>
+  
   <form action="<c:url value='/queryGames'/>" id="filter-form" method="post" target="content">
-  	<input type="text" id="genre-id-val" name="genreId" value="" hidden/>
-  	<input type="text" id="publisher-id-val" name="publisherId" value="" hidden/>
-<!-- test for lowestPrice
-  <input type="text" id="game-id-val" name="gameId" value="" hidden/> -->
- 
-  	<input type="submit" class="btn btn-primary" value="Apply filter" style="padding:10px"/>
-  	<input type="button" onclick="clearFilter()" class="btn btn-secondary" value="Clear filter" style="padding:10px"/>
+  	<input type="text" id="game-id-val" name="gameId" value="" hidden/>
+  	<input type="submit" class="btn btn-primary" value="Sort" style="padding:10px"/>
   </form>
+  
+  
+  
+  
+  <div class="card" >
+    <div class="card-header" onclick="showLowestPriceTab();" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Sort in Alphabetical Order
+        </button>
+        
+      </h2>
+    </div>
+  
+  <form action="<c:url value='/queryGames'/>" id="filter-form" method="post" target="content">
+  	<input type="text" id="game-id-val" name="gameId" value="" hidden/>
+  	<input type="submit" class="btn btn-primary" value="Sort" style="padding:10px"/>
+  </form>
+  
   
   
   
@@ -113,31 +146,31 @@
 	  publisherTab[0].classList.toggle("show");
   }
 
-// test for lowest Price  
-//  function showLowestPriceTab(){
-//	  let gameTab = document.getElementsByClassName("game-content");
-//	  gameTab[0].classList.toggle("show");	  
-//  }
-//  
+  // lowest price
+  function showLowestPriceTab(){
+	  let gameTab = document.getElementsByClassName("game-content");
+	  gameTab[0].classList.toggle("show");	  
+  }
   
-//  function selectGame(id,element){
+  
+  function selectGame(id,element){
 	  
-//	  selectedGames = document.getElementsByClassName('list-game-item active')
-//	  if(selectedGames && selectedGames.length){
-//		  for (let item of selectedGames) {
-//			  item.classList.remove("active")
-//			}
-//	  }
-//	  
-//	  
-//	  if((document.getElementById("game-id-val").value == id)){
-//		  element.classList.remove("active");
-//	  }else{
-//		  element.classList.add("active");
-//	  }
-//	  
-//	  let selectedGame = document.querySelector('[data-id=game'+id+']')
-//	  document.getElementById("game-id-val").value = (document.getElementById("game-id-val").value == id)?"":id;
+	  selectedGames = document.getElementsByClassName('list-game-item active')
+	  if(selectedGames && selectedGames.length){
+		  for (let item of selectedGames) {
+			  item.classList.remove("active")
+			}
+	  }
+	  
+	  
+	  if((document.getElementById("game-id-val").value == id)){
+		  element.classList.remove("active");
+	  }else{
+		  element.classList.add("active");
+	  }
+	  
+	  let selectedGame = document.querySelector('[data-id=game'+id+']')
+	  document.getElementById("game-id-val").value = (document.getElementById("game-id-val").value == id)?"":id;
 	  
   }
   
