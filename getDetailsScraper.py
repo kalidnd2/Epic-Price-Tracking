@@ -6,12 +6,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 import mysql.connector
 from mysql.connector.utils import validate_normalized_unicode_string
-import time 
+import time
+import os
 
 DB = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="",
+        password="skalidindi96",
         database="epic_tracking",
         auth_plugin='mysql_native_password'
     )
@@ -60,8 +61,9 @@ def getAllGenreGames(driver):
 
             games_list.append(game_obj)
 
-        next_paginate = driver.find_elements_by_class_name('css-1j31wz6-Icon__wrapper-PaginationItem__next')  
-        
+        next_paginate = driver.find_elements_by_class_name('css-1j31wz6-Icon__wrapper-PaginationItem__next')
+        print(next_paginate)
+
         try:
             if next_paginate:
                 next_paginate[0].click()
@@ -170,9 +172,15 @@ def insertPriceRecordForGame(game, gameId):
 
 def main():
     url = 'https://www.epicgames.com/store/en-US/browse?sortBy=title&sortDir=ASC&count=40&start=0'
-    driver = webdriver.Firefox(executable_path='D:/EpicGames Price Tracker/Drivers/geckodriver.exe')
+#   driver = webdriver.Firefox(executable_path='D:/EpicGames Price Tracker/Drivers/geckodriver.exe')
+#   driver = webdriver.Firefox(executable_path=':/')
+
+    PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+    DRIVER_BIN = os.path.join(PROJECT_ROOT, "geckodriver")
+    driver = webdriver.Firefox(executable_path = DRIVER_BIN)
     driver.get(url)
 
+    
     element = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.CLASS_NAME, "css-zgal9t-DiscoverCardLayout__component"))
     )

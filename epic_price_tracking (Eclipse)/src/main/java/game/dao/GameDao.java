@@ -39,7 +39,7 @@ public class GameDao {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
 			          .getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=");
+				              + "user=root&password=skalidindi96");
 			
 			
 			String sql = "insert into game(name,thumbnail,price) values(?,?,?)";
@@ -60,7 +60,7 @@ public class GameDao {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=");
+				              + "user=root&password=skalidindi96");
 			
 			
 			String sql = "SELECT game.id,game.name,game.thumbnail,game.price,publisher.publisher_name from game \r\n"
@@ -94,7 +94,7 @@ public class GameDao {
 		    String sql = "select * from game where id=?";
 			Connection connect = DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=");
+				              + "user=root&password=skalidindi96");
 		    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 		    preparestatement.setString(1,id);
 		    ResultSet resultSet = preparestatement.executeQuery();
@@ -122,7 +122,7 @@ public class GameDao {
 	    String sql = "UPDATE game SET name=?,thumbnail=?,price=? WHERE id = ?";
 		Connection connect = DriverManager
 				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-			              + "user=root&password=");
+			              + "user=root&password=skalidindi96");
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 	    preparestatement.setString(1,game.getName());
 	    preparestatement.setString(2,game.getThumbnail());
@@ -154,7 +154,7 @@ public class GameDao {
 		try {
 			Connection connect = DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=");
+				              + "user=root&password=skalidindi96");
 			
 			if(genre.isEmpty() && publisher.isEmpty()) {
 				return findall();
@@ -209,7 +209,7 @@ public class GameDao {
 	    String sql = "DELETE FROM game WHERE id = ? ";
 		Connection connect = DriverManager
 				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-			              + "user=root&password=");
+			              + "user=root&password=skalidindi96");
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 	    preparestatement.setString(1,game.getId());
 	    System.out.println(preparestatement.toString());

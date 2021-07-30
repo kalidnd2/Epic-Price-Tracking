@@ -21,7 +21,7 @@ public class TrackingDao {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
 			          .getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=");
+				              + "user=root&password=skalidindi96");
 			
 			
 			String sql = "SELECT G.id,G.name,G.thumbnail,G.price,publisher.publisher_name from game G "
@@ -55,7 +55,7 @@ public class TrackingDao {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
 			          .getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=");
+				              + "user=root&password=skalidindi96");
 			
 			
 			String sql = "INSERT INTO `user_interested_game` (`game_id`, `user_id`) VALUES (?, ?); ";
@@ -73,7 +73,7 @@ public class TrackingDao {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
 			          .getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=");
+				              + "user=root&password=skalidindi96");
 			
 			
 			String sql = "DELETE FROM `user_interested_game` WHERE game_id=? AND user_id = ?";

@@ -34,7 +34,7 @@ public class GenreDao {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
 			          .getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=");
+				              + "user=root&password=skalidindi96");
 			
 			
 			String sql = "INSERT INTO `genre` (`genre_name`, `parent_genre`) VALUES (?, ?); ";
@@ -54,7 +54,7 @@ public class GenreDao {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=");
+				              + "user=root&password=skalidindi96");
 			
 			
 			String sql = "select * from genre";
@@ -84,7 +84,7 @@ public class GenreDao {
 		    String sql = "select * from genre where id=?";
 			Connection connect = DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-				              + "user=root&password=");
+				              + "user=root&password=skalidindi96");
 		    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 		    preparestatement.setString(1,id);
 		    ResultSet resultSet = preparestatement.executeQuery();
@@ -110,7 +110,7 @@ public class GenreDao {
 	    String sql = "UPDATE genre SET genre_name=?,parent_genre=? WHERE id = ?";
 		Connection connect = DriverManager
 				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-			              + "user=root&password=");
+			              + "user=root&password=skalidindi96");
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 	    preparestatement.setString(1,genre.getName());
 	    preparestatement.setInt(2,(genre.getParentGenre().isEmpty()?Types.NULL:Integer.parseInt(genre.getParentGenre())));
@@ -133,7 +133,7 @@ public class GenreDao {
 	    String sql = "DELETE FROM genre WHERE id = ? ";
 		Connection connect = DriverManager
 				.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
-			              + "user=root&password=");
+			              + "user=root&password=skalidindi96");
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 	    preparestatement.setString(1,genre.getId());
 	    System.out.println(preparestatement.toString());
