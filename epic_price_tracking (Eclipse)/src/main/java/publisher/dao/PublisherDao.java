@@ -1,6 +1,7 @@
 package publisher.dao;
 
 import java.sql.Connection;
+import config.*;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,8 +19,8 @@ public class PublisherDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/" + game.Config.db_name + "?"
-				              + "user="+game.Config.db_user+"&password="+game.Config.db_password);
+					.getConnection("jdbc:mysql://localhost:3306/" + DBConfig.db_name + "?"
+				              + "user="+DBConfig.db_user+"&password="+DBConfig.db_password);
 			
 			
 			String sql = "insert into publisher(publisher_name) values(?)";
@@ -36,8 +37,8 @@ public class PublisherDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/" + game.Config.db_name + "?"
-				              + "user="+game.Config.db_user+"&password="+game.Config.db_password);
+					.getConnection("jdbc:mysql://localhost:3306/" + DBConfig.db_name + "?"
+				              + "user="+DBConfig.db_user+"&password="+DBConfig.db_password);
 			
 			
 			String sql = "select * from publisher";
@@ -66,8 +67,8 @@ public class PublisherDao {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		    String sql = "select * from publisher where id=?";
 			Connection connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/" + game.Config.db_name + "?"
-				              + "user="+game.Config.db_user+"&password="+game.Config.db_password);
+					.getConnection("jdbc:mysql://localhost:3306/" + DBConfig.db_name + "?"
+				              + "user="+DBConfig.db_user+"&password="+DBConfig.db_password);
 		    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 		    preparestatement.setString(1,id);
 		    ResultSet resultSet = preparestatement.executeQuery();
@@ -91,8 +92,8 @@ public class PublisherDao {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
 	    String sql = "UPDATE publisher SET publisher_name=? WHERE id = ?";
 		Connection connect = DriverManager
-				.getConnection("jdbc:mysql://localhost:3306/" + game.Config.db_name + "?"
-			              + "user="+game.Config.db_user+"&password="+game.Config.db_password);
+				.getConnection("jdbc:mysql://localhost:3306/" + DBConfig.db_name + "?"
+			              + "user="+DBConfig.db_user+"&password="+DBConfig.db_password);
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 	    preparestatement.setString(1,publisher.getPublisherName());
 	    preparestatement.setString(2,publisher.getId());
@@ -111,8 +112,8 @@ public class PublisherDao {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
 	    String sql = "DELETE FROM publisher WHERE id = ? ";
 		Connection connect = DriverManager
-				.getConnection("jdbc:mysql://localhost:3306/" + game.Config.db_name + "?"
-			              + "user="+game.Config.db_user+"&password="+game.Config.db_password);
+				.getConnection("jdbc:mysql://localhost:3306/" + DBConfig.db_name + "?"
+			              + "user="+DBConfig.db_user+"&password="+DBConfig.db_password);
 	    PreparedStatement preparestatement = connect.prepareStatement(sql); 
 	    preparestatement.setString(1,publisher.getId());
 	    System.out.println(preparestatement.toString());
