@@ -12,10 +12,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Config;
 import tracking.MyGame;
 import tracking.UserGame;
 import config.*;
+import game.domain.Game;
 
 
 
