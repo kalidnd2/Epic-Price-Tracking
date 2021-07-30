@@ -44,7 +44,11 @@ def getAllGenreGames(driver):
             if pricing1 and '%' not in pricing1: #% is usually in sale texts and not in actual price
                 pricing = pricing1
             else:
-                pricing = pricing2    
+                pricing = pricing2
+            if pricing == "Free":
+                pricing = "$00.00" 
+            if pricing == "Coming Soon":
+                pricing = None
 
             thumbnail = game.find_element_by_xpath('.//*[@data-testid="offer-card-image-portrait"]')
             thumbnail = WebDriverWait(thumbnail, 10).until(EC.presence_of_element_located((By.TAG_NAME, "img"))) #waits until the thumbnail is loaded in the browser
