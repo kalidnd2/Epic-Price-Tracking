@@ -14,8 +14,7 @@ DB = mysql.connector.connect(
         user="root",
         password="skalidindi96",
         database="epic_tracking",
-        auth_plugin='mysql_native_password'
-    )
+        auth_plugin='mysql_native_password')
 
 CURSOR1 = DB.cursor(prepared=True)
 
@@ -26,8 +25,7 @@ def getAllGenreGames(driver):
 
     while(True):
         element = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.CLASS_NAME, "css-zgal9t-DiscoverCardLayout__component"))
-        )
+            EC.presence_of_element_located((By.CLASS_NAME, "css-zgal9t-DiscoverCardLayout__component")))
 
         body = driver.find_element_by_tag_name('body') 
         for i in range(7):
@@ -56,8 +54,7 @@ def getAllGenreGames(driver):
                 'title': title,
                 'publisher': subtitle,
                 'pricing': pricing,
-                'thumbnail': thumbnail
-            }
+                'thumbnail': thumbnail}
 
             games_list.append(game_obj)
 
@@ -88,7 +85,21 @@ def insertGamesWithGenre(genre, games):
         insertGenreGame(genreID,gameId)
         insertPublisherGame(publisherID,gameId)
         insertPriceRecordForGame(game,gameId)
-        
+
+#### For Lowest Price
+#### data type is still VARCHAR, will need to change that first
+
+def insertGameLowestPrice(priceRecord)  
+      stmt = "SELECT min(price), FROM price_Record WHERE gameId = ?"
+      CURSOR1.execute(stmt, tuple([priceRecord('CurrentPrice'])
+      output = CURSOR1.fetchone()
+      
+      for output in currentPrice
+          LowestPrice = min(currentPrice)
+      print(LowestPrice)
+      DB.commit()
+      return LowestPrice
+
 
 def insertGameifNotExists(game):
     stmt = "SELECT id, name FROM game WHERE name = ?"
@@ -104,6 +115,7 @@ def insertGameifNotExists(game):
     print(gameId)
     DB.commit()
     return gameId  
+
 
 def insertPublisherIfNotExists(publisherName):
     stmt = "SELECT id, publisher_name FROM publisher WHERE publisher_name = ?"
@@ -122,6 +134,7 @@ def insertPublisherIfNotExists(publisherName):
     DB.commit()
     return publisherid    
 
+
 def insertGenreIfNotExists(genreName):
     stmt = "SELECT id, genre_name FROM genre WHERE genre_name = ?"
     CURSOR1.execute(stmt, tuple([genreName]))
@@ -139,6 +152,7 @@ def insertGenreIfNotExists(genreName):
     DB.commit()
     return genreId    
 
+
 def insertGenreGame(genreId, gameId):
     stmt = "SELECT game_id, genre_id FROM game_genre WHERE game_id = ? AND genre_id = ?"
     CURSOR1.execute(stmt, tuple([gameId, genreId]))
@@ -151,6 +165,7 @@ def insertGenreGame(genreId, gameId):
        
     DB.commit()
 
+
 def insertPublisherGame(publisherId, gameId):
     stmt = "SELECT game_id, publisher_id FROM game_publisher WHERE game_id = ? AND publisher_id = ?"
     CURSOR1.execute(stmt, tuple([gameId, publisherId]))
@@ -162,6 +177,7 @@ def insertPublisherGame(publisherId, gameId):
         CURSOR1.execute(stmt, tuple([gameId, publisherId]))
        
     DB.commit()   
+
 
 def insertPriceRecordForGame(game, gameId):
     stmt = "INSERT INTO price_record (game_id, timestamp, current_price) VALUES (?,?,?)"
