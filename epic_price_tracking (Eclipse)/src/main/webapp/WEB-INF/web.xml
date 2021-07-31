@@ -262,6 +262,17 @@
     <url-pattern>/findGenrePublisher</url-pattern>
   </servlet-mapping> 
   
+  <servlet>
+    <description></description>
+    <display-name>ReadPriceDropsUser</display-name>
+    <servlet-name>ReadPriceDropsUser</servlet-name>
+    <servlet-class>game.web.servlet.ReadPriceDropsUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReadPriceDropsUser</servlet-name>
+    <url-pattern>/readPriceDropsUser</url-pattern>
+  </servlet-mapping> 
+  
   
   
   

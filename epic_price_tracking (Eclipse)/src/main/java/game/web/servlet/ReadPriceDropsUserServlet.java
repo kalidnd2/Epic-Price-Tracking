@@ -48,7 +48,7 @@ public class ReadPriceDropsUserServlet extends HttpServlet {
 					System.out.println(name + ": " + Arrays.toString(values));
 				}
 				String userId = info.get(0);
-				
+				System.out.println("argument being passed through post:" + userId);
 				try {
 					request.setAttribute("GameList", gameservice.queryReturnDiscountedPriceGames(userId));
 				} catch (InstantiationException | IllegalAccessException
