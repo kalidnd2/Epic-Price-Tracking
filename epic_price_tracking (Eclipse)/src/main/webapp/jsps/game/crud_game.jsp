@@ -27,6 +27,7 @@
   <a href="<c:url value='/jsps/game/create2.jsp'/>" target="body">Create Game</a>&nbsp;&nbsp;
   <a href="<c:url value='/jsps/game/update2.jsp'/>" target="body">Update Game</a>&nbsp;&nbsp;
   <a href="<c:url value='/jsps/game/delete2.jsp'/>" target="body">Delete Game</a>&nbsp;&nbsp;
+  <a href="<c:url value='/jsps/game/price_drop_user.jsp'/>" target="body">My Price Drops</a>&nbsp;&nbsp;
 
   </body>
 </html>
