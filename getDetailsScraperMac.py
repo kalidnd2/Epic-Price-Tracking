@@ -91,7 +91,6 @@ def insertGamesWithGenre(genre, games):
         insertPriceRecordForGame(game,gameId)
 
 #### For Lowest Price
-#### data type is still VARCHAR, will need to change that first
 
 ##def insertGameLowestPrice(priceRecord)  
 ##      stmt = "SELECT min(price), FROM price_Record WHERE gameId = ?"
@@ -103,19 +102,6 @@ def insertGamesWithGenre(genre, games):
 #      print(LowestPrice)
 #      DB.commit()
 #      return LowestPrice
-
-### by alphabetical order
-
-#def alphabeticalOrder(game)
-#    stmt = "SELECT name FROM game where id = ?
-#    CURSOR1.execute(stmt, tuple([game['title']]))
-#    output = CURSOR1.fetchone()
-
-#    alphabetical = game.sort_values(by = 'name')
-
-#    print(alphabetical)
-#    DB.commit()
-#    return alphabetical
     
 
 def insertGameifNotExists(game):
