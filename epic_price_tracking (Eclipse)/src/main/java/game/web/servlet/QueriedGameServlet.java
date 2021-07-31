@@ -39,9 +39,21 @@ public class QueriedGameServlet extends HttpServlet{
 		
 		String genreId = info.get(0);
 		String publisherId = info.get(1);
+		String sortVariable = info.get(2);
 		
 		try {
-			req.setAttribute("GameList", gameservice.query(genreId,publisherId));
+			if(sortVariable == null || sortVariable.isEmpty())
+			{
+				req.setAttribute("GameList", gameservice.query(genreId,publisherId,null));
+
+			}
+			
+			else
+			{
+				req.setAttribute("GameList", gameservice.query(null,null,sortVariable));
+
+			}
+			
 			req.getRequestDispatcher("/Queryresult/gamelist.jsp").forward(req, resp);
 			//response.sendRedirect( request.getContextPath() + "/jsps/user/login.jsp");
 		}  catch (InstantiationException e) {

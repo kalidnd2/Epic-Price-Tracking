@@ -148,7 +148,7 @@ public class GameDao {
 	 * @throws IllegalAccessException
 	 * @throws ClassNotFoundException
 	 */
-	public List<Object> queryGames(String genre, String publisher) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+	public List<Object> queryGames(String genre, String publisher, String sortVariable) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		ArrayList<Object> list = new ArrayList<Object>();
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
 		try {
@@ -156,33 +156,53 @@ public class GameDao {
 					.getConnection("jdbc:mysql://localhost:3306/" + DBConfig.db_name + "?"
 				              + "user="+DBConfig.db_user+"&password="+DBConfig.db_password);
 			
-			if(genre.isEmpty() && publisher.isEmpty()) {
-				return findall();
+			PreparedStatement preparestatement = null;
+			if(genre == null && publisher == null)
+			{
+				String sql = "SELECT game.id,game.name,game.thumbnail,game.price,publisher.publisher_name from game \r\n"
+						+ "LEFT JOIN game_publisher AS GP ON game.id = GP.game_id \r\n"
+						+ "LEFT JOIN publisher ON GP.publisher_id = publisher.id "; 
+				System.out.println(sortVariable);
+				if(sortVariable.equals("name"))
+				{
+					sql = sql.concat(" order by name asc");
+				}
+				
+				System.out.println(sql);
+				preparestatement = connect.prepareStatement(sql);
+			}
+			else
+			{
+				if(genre.isEmpty() && publisher.isEmpty()) {
+					return findall();
+				}
+				
+				if(!genre.isEmpty() && !publisher.isEmpty()) { //return list of games belonging to genre and publisher
+					String sql = "SELECT G.id,G.name,G.thumbnail,G.price,publisher.publisher_name FROM game G "
+							+ "LEFT JOIN game_publisher AS GP ON G.id = GP.game_id "
+							+ "LEFT JOIN publisher ON GP.publisher_id = publisher.id WHERE GP.publisher_id= ? "
+							+ "AND EXISTS (SELECT * FROM game_genre WHERE game_genre.game_id = G.id AND game_genre.genre_id = ?)";
+					
+					
+					preparestatement = connect.prepareStatement(sql);
+					preparestatement.setString(1,publisher);
+				    preparestatement.setString(2,genre);
+				}else if(!genre.isEmpty()) { // return a list of games belonging to the genre
+					String sql = "SELECT G.id,G.name,G.thumbnail,G.price,publisher.publisher_name FROM game G "
+							+ "LEFT JOIN game_publisher AS GP ON G.id = GP.game_id "
+							+ "LEFT JOIN publisher ON GP.publisher_id = publisher.id "
+							+ "WHERE EXISTS (SELECT * FROM game_genre WHERE game_genre.game_id = G.id AND game_genre.genre_id = ?)";
+					preparestatement = connect.prepareStatement(sql);
+					preparestatement.setString(1,genre);
+				}else if(!publisher.isEmpty()) { //return a list of games belonging to publisher
+					String sql = "SELECT G.id,G.name,G.thumbnail,G.price,publisher.publisher_name FROM game G "
+							+ "LEFT JOIN game_publisher AS GP ON G.id = GP.game_id "
+							+ "LEFT JOIN publisher ON GP.publisher_id = publisher.id WHERE GP.publisher_id=?";
+					preparestatement = connect.prepareStatement(sql);
+					preparestatement.setString(1,publisher);
+				}
 			}
 			
-			PreparedStatement preparestatement = null;
-			if(!genre.isEmpty() && !publisher.isEmpty()) { //return list of games belonging to genre and publisher
-				String sql = "SELECT G.id,G.name,G.thumbnail,G.price,publisher.publisher_name FROM game G "
-						+ "LEFT JOIN game_publisher AS GP ON G.id = GP.game_id "
-						+ "LEFT JOIN publisher ON GP.publisher_id = publisher.id WHERE GP.publisher_id= ? "
-						+ "AND EXISTS (SELECT * FROM game_genre WHERE game_genre.game_id = G.id AND game_genre.genre_id = ?)";
-				preparestatement = connect.prepareStatement(sql);
-				preparestatement.setString(1,publisher);
-			    preparestatement.setString(2,genre);
-			}else if(!genre.isEmpty()) { // return a list of games belonging to the genre
-				String sql = "SELECT G.id,G.name,G.thumbnail,G.price,publisher.publisher_name FROM game G "
-						+ "LEFT JOIN game_publisher AS GP ON G.id = GP.game_id "
-						+ "LEFT JOIN publisher ON GP.publisher_id = publisher.id "
-						+ "WHERE EXISTS (SELECT * FROM game_genre WHERE game_genre.game_id = G.id AND game_genre.genre_id = ?)";
-				preparestatement = connect.prepareStatement(sql);
-				preparestatement.setString(1,genre);
-			}else if(!publisher.isEmpty()) { //return a list of games belonging to publisher
-				String sql = "SELECT G.id,G.name,G.thumbnail,G.price,publisher.publisher_name FROM game G "
-						+ "LEFT JOIN game_publisher AS GP ON G.id = GP.game_id "
-						+ "LEFT JOIN publisher ON GP.publisher_id = publisher.id WHERE GP.publisher_id=?";
-				preparestatement = connect.prepareStatement(sql);
-				preparestatement.setString(1,publisher);
-			}
 			
 			ResultSet resultSet = preparestatement.executeQuery();
 			

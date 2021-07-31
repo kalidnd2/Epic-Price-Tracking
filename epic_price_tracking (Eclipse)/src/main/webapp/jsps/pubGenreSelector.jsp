@@ -63,18 +63,16 @@
   </div>
  
  
- 
- 
- 
- 
   </div>
   <form action="<c:url value='/queryGames'/>" id="filter-form" method="post" target="content">
   	<input type="text" id="genre-id-val" name="genreId" value="" hidden/>
   	<input type="text" id="publisher-id-val" name="publisherId" value="" hidden/> 
+  	<input type="text" id="game-id-val" name="sortVariable" value="" hidden/> 
   	<input type="submit" class="btn btn-primary" value="Apply filter" style="padding:10px"/>
   	<input type="button" onclick="clearFilter()" class="btn btn-secondary" value="Clear filter" style="padding:10px"/>
   </form>
   
+ 
   
   
   <div class="card" >
@@ -86,19 +84,17 @@
         
       </h2>
     </div>
-
-
- <!--   
- 	<div id="collapseTwo" class="collapse publisher-content" aria-labelledby="headingTwo" data-parent="#accordionExample">
+    
+ 	<div id="collapseTwo" class="collapse game-content" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div class="card-body" style="padding:0px">
-		<ul class="list-group publishers-list">
-		  <c:forEach items="${publisherList}" var="publisher">
-		  	<li class="list-group-item list-publisher-item" data-id="publisher-${publisher.id}" onclick="selectPublisher(${publisher.id},this)">${publisher.publisherName}</li>
+		<ul class="list-group game-list">
+		  <c:forEach items="${gamelist}" var="game">
+		  	<li class="list-group-item list-game-item" data-id="game-${game.id}" onclick="selectGame(${game.id},this)">${game.name}</li>
 		  </c:forEach>
 		</ul>
 	  </div>
     </div>
-     -->
+
 
   </div>
   
@@ -122,7 +118,10 @@
   
   <form action="<c:url value='/queryGames'/>" id="filter-form" method="post" target="content">
   	<input type="text" id="game-id-val" name="gameId" value="" hidden/>
+  	<input type="text" id="game-id-val2" name="gameId2" value="" hidden/>
+  	<input type="text" id="game-id-val3" name="gameId3" value="name" hidden/>
   	<input type="submit" class="btn btn-primary" value="Sort" style="padding:10px"/>
+  	
   </form>
   
   
