@@ -61,4 +61,7 @@ public class GameService {
 		return gameDao.queryGames(genreId, publisherID, sortVariable);
 	}
 	
+	public List<Object> queryReturnDiscountedPriceGames(String userID) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		return gameDao.queryReturnDiscountedPriceGames(userID);
+	}
 }
