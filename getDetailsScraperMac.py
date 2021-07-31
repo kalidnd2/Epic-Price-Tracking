@@ -101,9 +101,22 @@ def insertGamesWithGenre(genre, games):
 #      for output in currentPrice
 #          LowestPrice = min(currentPrice)
 #      print(LowestPrice)
-#     DB.commit()
+#      DB.commit()
 #      return LowestPrice
 
+### by alphabetical order
+
+#def alphabeticalOrder(game)
+#    stmt = "SELECT name FROM game where id = ?
+#    CURSOR1.execute(stmt, tuple([game['title']]))
+#    output = CURSOR1.fetchone()
+
+#    alphabetical = game.sort_values(by = 'name')
+
+#    print(alphabetical)
+#    DB.commit()
+#    return alphabetical
+    
 
 def insertGameifNotExists(game):
     stmt = "SELECT id, name FROM game WHERE name = ?"
