@@ -256,11 +256,11 @@ public class GameDao {
 				    		"LEFT JOIN game_publisher AS GP ON game.id = GP.game_id" +
 				    		"LEFT JOIN publisher ON GP.publisher_id = publisher.id" +
 				    		"INNER JOIN user_interested_game ON game.id = user_interested_game.game_id" +
-				            "WHERE user_interested_game.user_id = ?" +
+				            "WHERE user_interested_game.user_id = ? " +
 				            "AND game.price < ("+
 				            "select max(current_price) from price_record where month(timestamp) = month(CURRENT_TIMESTAMP - INTERVAL 1 MONTH))";
 			PreparedStatement preparestatement = connect.prepareStatement(sql); 
-			preparestatement.setString(1,userID);
+			preparestatement.setInt(1, Integer.parseInt(userID));;
 			ResultSet resultSet = preparestatement.executeQuery();
 			
 			while(resultSet.next()){

@@ -47,7 +47,7 @@ public class ReadPriceDropsUserServlet extends HttpServlet {
 					info.add(values[0]);
 					System.out.println(name + ": " + Arrays.toString(values));
 				}
-				String userId = info.get(0);
+				String userId = info.get(1);
 				System.out.println("argument being passed through post:" + userId);
 				try {
 					request.setAttribute("GameList", gameservice.queryReturnDiscountedPriceGames(userId));
@@ -56,19 +56,6 @@ public class ReadPriceDropsUserServlet extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				try {
-					List<Object> li = gameservice.findall();
-					for(int i = 0; i < li.size();i++){
-						System.out.println(li.get(i).toString());
-					}
-					
-				} catch (InstantiationException | IllegalAccessException
-						| ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				
 				request.getRequestDispatcher("/Queryresult/gamelist.jsp").forward(request, response);
 		
 	}
