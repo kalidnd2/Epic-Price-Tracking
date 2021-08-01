@@ -72,37 +72,6 @@
   	<input type="button" onclick="clearFilter()" class="btn btn-secondary" value="Clear filter" style="padding:10px"/>
   </form>
   
- 
-  
-  
-  <div class="card" >
-    <div class="card-header" onclick="showLowestPriceTab();" id="headingTwo">
-      <h2 class="mb-0">
-        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Sort By Price
-        </button>
-        
-      </h2>
-    </div>
-    
- 	<div id="collapseTwo" class="collapse game-content" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body" style="padding:0px">
-		<ul class="list-group game-list">
-		  <c:forEach items="${gamelist}" var="game">
-		  	<li class="list-group-item list-game-item" data-id="game-${game.id}" onclick="selectGame(${game.id},this)">${game.name}</li>
-		  </c:forEach>
-		</ul>
-	  </div>
-    </div>
-
-
-  </div>
-  
-  <form action="<c:url value='/queryGames'/>" id="filter-form" method="post" target="content">
-  	<input type="text" id="game-id-val" name="gameId" value="" hidden/>
-  	<input type="submit" class="btn btn-primary" value="Sort" style="padding:10px"/>
-  </form>
-  
   
   
   
