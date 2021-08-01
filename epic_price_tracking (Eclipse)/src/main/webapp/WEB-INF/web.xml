@@ -271,10 +271,18 @@
   <servlet-mapping>
     <servlet-name>ReadPriceDropsUser</servlet-name>
     <url-pattern>/readPriceDropsUser</url-pattern>
-  </servlet-mapping> 
-  
-  
-  
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>UsersTrackingGame</display-name>
+    <servlet-name>UsersTrackingGame</servlet-name>
+    <servlet-class> user.web.servlet.UsersTrackingGameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsersTrackingGame</servlet-name>
+    <url-pattern>/UsersTrackingGame</url-pattern>
+  </servlet-mapping>
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

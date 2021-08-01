@@ -68,6 +68,9 @@
       	</form> --%>
       		<a class="nav-link" id="my-tracking-list" href="<c:url value='/UserGame'/>" target="body">My Tracking List</a>
       	</li>
+		<li>
+			<a class="nav-link" id="game-users" href="<c:url value='/jsps/game/usersTrackingGame.jsp'/>" target="body">Users tracking game</a>
+		</li>
 		</c:otherwise>
 	</c:choose>
     </ul>

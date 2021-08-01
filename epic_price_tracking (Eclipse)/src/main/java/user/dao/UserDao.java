@@ -199,6 +199,39 @@ public class UserDao {
 		
 		
 	}
+
+
+	public List<Object> findUsersTrackingGame(String gameId) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		List<Object> list = new ArrayList<>();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			Connection connect = DriverManager
+					.getConnection("jdbc:mysql://localhost:3306/epic_tracking?"
+							+ "user=root&password=");
+
+
+			String sql = "select tb_user.id, tb_user.username, tb_user.email " +
+					"FROM tb_user WHERE exists " +
+					"( SELECT * from user_interested_game " +
+					"WHERE user_interested_game.user_id = tb_user.id AND user_interested_game.game_id = ?) ";
+
+			PreparedStatement preparestatement = connect.prepareStatement(sql);
+			preparestatement.setString(1,gameId);
+			ResultSet resultSet = preparestatement.executeQuery();
+
+			while(resultSet.next()){
+				User user = new User();
+				user.setId(resultSet.getString("id"));
+				user.setUsername(resultSet.getString("username"));
+				user.setEmail(resultSet.getString("email"));
+				list.add(user);
+			}
+
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return list;
+	}
 	
 	
 		

@@ -66,5 +66,9 @@ public class UserService {
 		userDao.deleteUser(user);
 	}
 	
+	public List<Object> getUsersTrackingGame(String gameId) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		return  userDao.findUsersTrackingGame(gameId);
+	}
+	
 	
 }
